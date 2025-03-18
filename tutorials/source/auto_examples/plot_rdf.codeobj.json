@@ -1,0 +1,414 @@
+{
+ "InterRDF": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis.rdf",
+   "module_short": "MDAnalysis.analysis.rdf",
+   "name": "InterRDF"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis",
+   "module_short": "MDAnalysis.analysis",
+   "name": "InterRDF"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "InterRDF"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis.base",
+   "module_short": "MDAnalysis.analysis.base",
+   "name": "AnalysisBase"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis",
+   "module_short": "MDAnalysis.analysis",
+   "name": "AnalysisBase"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "AnalysisBase"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis.rdf",
+   "module_short": "MDAnalysis.analysis.rdf",
+   "name": "InterRDF"
+  }
+ ],
+ "PROJECT_PATH": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib._local",
+   "module_short": "pathlib",
+   "name": "PosixPath"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PosixPath"
+  }
+ ],
+ "Path": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib._local",
+   "module_short": "pathlib",
+   "name": "Path"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib._abc",
+   "module_short": "pathlib._abc",
+   "name": "PathBase"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PathBase"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib._local",
+   "module_short": "pathlib",
+   "name": "PurePath"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PurePath"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib._abc",
+   "module_short": "pathlib._abc",
+   "name": "PurePathBase"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PurePathBase"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  }
+ ],
+ "box_l": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "float"
+  }
+ ],
+ "mda.Universe": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis.core.universe",
+   "module_short": "MDAnalysis.core.universe",
+   "name": "Universe"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis.core",
+   "module_short": "MDAnalysis.core",
+   "name": "Universe"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "Universe"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "Universe"
+  }
+ ],
+ "plt.plot": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "plot"
+  }
+ ],
+ "plt.savefig": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "savefig"
+  }
+ ],
+ "plt.xlabel": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "xlabel"
+  }
+ ],
+ "plt.ylabel": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "ylabel"
+  }
+ ],
+ "rdf": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis.rdf",
+   "module_short": "MDAnalysis.analysis.rdf",
+   "name": "InterRDF"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis",
+   "module_short": "MDAnalysis.analysis",
+   "name": "InterRDF"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "InterRDF"
+  }
+ ],
+ "rdf.results.bins": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "ndarray"
+  }
+ ],
+ "rdf.results.rdf": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "ndarray"
+  }
+ ],
+ "rdf.run": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis.rdf",
+   "module_short": "MDAnalysis.analysis.rdf",
+   "name": "InterRDF.run"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis",
+   "module_short": "MDAnalysis.analysis",
+   "name": "InterRDF.run"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "InterRDF.run"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis.base",
+   "module_short": "MDAnalysis.analysis.base",
+   "name": "AnalysisBase.run"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.analysis",
+   "module_short": "MDAnalysis.analysis",
+   "name": "AnalysisBase.run"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "AnalysisBase.run"
+  }
+ ],
+ "universe": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core.universe",
+   "module_short": "MDAnalysis.core.universe",
+   "name": "Universe"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core",
+   "module_short": "MDAnalysis.core",
+   "name": "Universe"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "Universe"
+  }
+ ],
+ "universe.atoms": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core.groups",
+   "module_short": "MDAnalysis",
+   "name": "AtomGroup"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core",
+   "module_short": "MDAnalysis",
+   "name": "AtomGroup"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "AtomGroup"
+  }
+ ],
+ "universe.dimensions": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core.universe",
+   "module_short": "MDAnalysis.core.universe",
+   "name": "Universe.dimensions"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core",
+   "module_short": "MDAnalysis.core",
+   "name": "Universe.dimensions"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "Universe.dimensions"
+  }
+ ],
+ "universe.trajectory": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core.universe",
+   "module_short": "MDAnalysis.core.universe",
+   "name": "Universe.trajectory"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis.core",
+   "module_short": "MDAnalysis.core",
+   "name": "Universe.trajectory"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "MDAnalysis",
+   "module_short": "MDAnalysis",
+   "name": "Universe.trajectory"
+  }
+ ]
+}

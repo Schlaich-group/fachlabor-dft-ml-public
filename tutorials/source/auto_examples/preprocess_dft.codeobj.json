@@ -1,0 +1,20 @@
+{
+ "pint.UnitRegistry": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pint",
+   "module_short": "pint",
+   "name": "UnitRegistry"
+  }
+ ],
+ "tqdm": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "tqdm",
+   "module_short": "tqdm",
+   "name": "tqdm"
+  }
+ ]
+}
