@@ -1,4 +1,4 @@
-deploy-pages:
+pages:
   script:
     - mkdir .public
     - cp -r tutorials/build/html .public
