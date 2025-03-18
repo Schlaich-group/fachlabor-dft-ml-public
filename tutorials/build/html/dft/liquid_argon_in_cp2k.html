@@ -1,0 +1,626 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Examples" href="../auto_examples/index.html" /><link rel="prev" title="Machine Learning of Atomistic Interactions Tutorials" href="../index.html" />
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Liquid argon with CP2K - Machine Learning of Atomistic Interactions documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Machine Learning of Atomistic Interactions  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Machine Learning of Atomistic Interactions  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Liquid argon with CP2K</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../auto_examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_gap.html">SyntaxError</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/dft/liquid_argon_in_cp2k.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="liquid-argon-with-cp2k">
+<h1>Liquid argon with CP2K<a class="headerlink" href="#liquid-argon-with-cp2k" title="Link to this heading">¶</a></h1>
+<div class="abstract docutils container">
+<p>In this tutorial, we learn how to simulate liquid argon with CP2K and using Born-Oppenheimer ab-initio MD.</p>
+</div>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>To run a simulation in CP2K, one needs to provide CP2K with an input script.</p>
+</div>
+<div class="justify docutils container">
+<p>Create a folder, call it <em>dft_liquid_argon_85/</em>, and then create a blank text file in it
+called <em>Argon_Simulation.inp</em>. Copy the following lines in the <em>Argon_Simulation.inp</em>, where a line starting with
+a hash symbol (#) is a comment ignored by CP2K:</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span> <span class="c"># Name of the project</span>
+ @SET PROJ_NAME Argon_Simulation
+
+ <span class="c"># Set global properties</span>
+ <span class="nb">&amp;GLOBAL</span>
+     PROJECT <span class="k">${</span><span class="nv">PROJ_NAME</span><span class="k">}</span>
+
+     <span class="c"># Fast Fourier transform settings</span>
+     PREFERRED_FFT_LIBRARY FFTW
+     FFTW_PLAN_TYPE MEASURE
+
+     <span class="c"># Set type of the run.</span>
+     RUN_TYPE MD
+
+     PRINT_LEVEL LOW
+     WALLTIME 172000
+ <span class="nb">&amp;END</span> GLOBAL
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Here we set the global properties.
+First we set the project name.
+Then FFT specifies our settings for performing fast fourier transformations.
+Finally, we set the run type to molecular dynamics.</p>
+</div>
+</section>
+<section id="force-calculation-with-dft">
+<h2>Force Calculation with DFT<a class="headerlink" href="#force-calculation-with-dft" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>Next, we specify our settings for the force and energy calculation using DFT.
+Start with the following two lines</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span> <span class="c"># Parameters for force calculation.</span>
+ <span class="nb">&amp;FORCE_EVAL</span>
+     <span class="c"># Define the DFT parameters</span>
+     <span class="nb">&amp;DFT</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Then, we will specify some general DFT settings. First, we set the system charge to 0</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        CHARGE 0
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Next, we need to specify a basis set and a potential. First, copy the files in <em>resources/dft/BASIS_MOLOPT</em> and <em>GTH_POTENTIALS</em> to your directory <em>dft/liquid_argon_85</em>. Then we import our files by specifying the following in <em>Argon_Simulation.inp</em></p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        BASIS_SET_FILE_NAME BASIS_MOLOPT
+        POTENTIAL_FILE_NAME GTH_POTENTIALS
+</pre></div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">About basis sets</p>
+<p>A basis set is a set of functions that is used to represent the electronic wave function.</p>
+</div>
+<div class="info admonition">
+<p class="admonition-title">About pseudopotentials</p>
+<p>The pseudopotential is used as an approximation for the simplified description of the nucleus-valence electron and core electron-valence electron interaction.</p>
+</div>
+<div class="justify docutils container">
+<p>Next, we have a whole bunch of parameters for our calculation</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="c"># Multi-grid information</span>
+        <span class="nb">&amp;MGRID</span>
+            <span class="c"># Optimize this parameter</span>
+            CUTOFF 600
+            NGRIDS 5
+        <span class="nb">&amp;END</span> MGRID
+        <span class="nb">&amp;SCF</span>
+            <span class="c"># Use a restart to guess wave-function.</span>
+            SCF_GUESS RESTART
+            MAX_SCF 30
+            EPS_SCF 1.0E-6
+            <span class="c"># Orbital transformation (wave-function minimization) scheme</span>
+            <span class="nb">&amp;OT</span>
+                MINIMIZER DIIS
+                PRECONDITIONER FULL_SINGLE_INVERSE
+            <span class="nb">&amp;END</span> OT
+            <span class="nb">&amp;OUTER_SCF</span>
+                MAX_SCF 100
+                EPS_SCF 1.0E-6
+            <span class="nb">&amp;END</span> OUTER_SCF
+            <span class="c"># Print options for SCF information -- need for restart files</span>
+            <span class="nb">&amp;PRINT</span>
+                <span class="c"># Dump restart files</span>
+                <span class="nb">&amp;RESTART</span>
+                    ADD_LAST NUMERIC
+                    <span class="nb">&amp;EACH</span>
+                        QS_SCF 0
+                    <span class="nb">&amp;END</span> EACH
+                <span class="nb">&amp;END</span> RESTART
+            <span class="nb">&amp;END</span> PRINT
+        <span class="nb">&amp;END</span> SCF
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Then, we specify our exchange-correlation functional, and set it to the Perdew-Burke-Ernzerhof functional (PBE)</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="c"># Define XC functional parameters</span>
+        <span class="nb">&amp;XC</span>
+          <span class="nb">&amp;XC_FUNCTIONAL</span> PBE
+          <span class="nb">&amp;END</span> XC_FUNCTIONAL
+        <span class="nb">&amp;END</span> XC
+</pre></div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">About exchange correlation functionals</p>
+<p>The exchange correlation functional approximates the electronic exchange and correlation energy from the electron density.</p>
+</div>
+<div class="justify docutils container">
+<p>Finally, we close our section of the DFT settings using</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>    <span class="nb">&amp;END</span> DFT
+</pre></div>
+</div>
+<section id="system-definition">
+<h3>System definition<a class="headerlink" href="#system-definition" title="Link to this heading">¶</a></h3>
+<div class="justify docutils container">
+<p>Next, we need to tell CP2K what kind of system we are simulating.
+Start your system section with</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>    <span class="nb">&amp;SUBSYS</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Then we add our topology information, like coordinates and system size.</p>
+<p>First, we need to provide CP2K with a starting configuration. Todo so copy <em>resources/argon.xyz</em> to your directory <em>dft_liquid_argon_85</em>.
+Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize <em>argon.xyz</em> with <em>vmd</em>. This is our starting configuration.</p>
+<p>We now tell CP2K to use this file using</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="nb">&amp;TOPOLOGY</span>
+            <span class="c"># Starting configuration.</span>
+            COORD_FILE_NAME argon.xyz
+            COORD_FILE_FORMAT XYZ
+            <span class="nb">&amp;GENERATE</span>
+            <span class="nb">&amp;END</span> GENERATE
+        <span class="nb">&amp;END</span> TOPOLOGY
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Next, we set the size of the simulation box using</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="nb">&amp;CELL</span>
+            <span class="c"># Cubic box.</span>
+            ABC <span class="o">[</span>angstrom<span class="o">]</span> 17.0742 17.0742 17.0742
+        <span class="nb">&amp;END</span> CELL
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Finally, we tell CP2K which basis set and potential to use for our Argon atoms (Ar)</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="nb">&amp;KIND</span> Ar
+            <span class="c"># Basis set -- discuss this.</span>
+            BASIS_SET DZVP-MOLOPT-SR-GTH
+            <span class="c"># Pseudo-potential --  discuss this.</span>
+            POTENTIAL GTH-PBE-q8
+        <span class="nb">&amp;END</span> KIND
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Last but not least, we close our system definition and the force calculation sections with</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>    <span class="nb">&amp;END</span> SUBSYS
+<span class="nb">&amp;END</span> FORCE_EVAL
+</pre></div>
+</div>
+</section>
+</section>
+<section id="molecular-dynamics">
+<h2>Molecular dynamics<a class="headerlink" href="#molecular-dynamics" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>Now, we want to move our nuclei according to the forces obtained from DFT.</p>
+<p>We start our motion and md section with</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span><span class="nb">&amp;MOTION</span>
+    <span class="nb">&amp;MD</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Then we set our ensemble to NVT (constant number of particles N, constant volume V and constant temperature T)</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        ENSEMBLE NVT
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Next, we set our number of timesteps and the timestep</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        STEPS 5000
+        TIMESTEP 10.0   <span class="c">#femtoseconds</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>And specify our temperature</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        TEMPERATURE 85  <span class="c">#Kelvin</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>In order to run a simulation at a constant temperature, we need a thermostat. A thermostat changes the particle velocities during the simulation to keep the temperature constant. Here, we use the Nose-Hoover thermostat</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="c"># Nose-Hoover thermostat</span>
+        <span class="nb">&amp;THERMOSTAT</span>
+            TYPE NOSE
+            REGION MASSIVE
+            <span class="nb">&amp;NOSE</span>
+                TIMECON <span class="o">[</span>fs<span class="o">]</span> 100
+            <span class="nb">&amp;END</span> NOSE
+        <span class="nb">&amp;END</span> THERMOSTAT
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Next, we tell CP2K to print the output and restart file if walltime is reached or the command gets an external EXIT command.</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="nb">&amp;PRINT</span>
+            FORCE_LAST
+        <span class="nb">&amp;END</span> PRINT
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>and finally, we close the MD section with</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span><span class="nb">&amp;END</span> MD
+</pre></div>
+</div>
+<section id="writing-coordinates-and-forces">
+<h3>Writing coordinates and forces<a class="headerlink" href="#writing-coordinates-and-forces" title="Link to this heading">¶</a></h3>
+<div class="justify docutils container">
+<p>Now, we tell CP2K which information to write to an output file using &amp;PRINT. We tell CP2K to write out the coordinates, velocities and forces. We also tell CP2K to write a restart file every step.</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="c"># Define print statements</span>
+    <span class="nb">&amp;PRINT</span>
+        <span class="nb">&amp;TRAJECTORY</span>
+        <span class="nb">&amp;END</span> TRAJECTORY
+        <span class="nb">&amp;VELOCITIES</span>
+        <span class="nb">&amp;END</span> VELOCITIES
+        <span class="nb">&amp;FORCES</span>
+        <span class="nb">&amp;END</span> FORCES
+        <span class="c"># Dump a restart file every step.</span>
+        <span class="nb">&amp;RESTART</span>
+            ADD_LAST NUMERIC
+            <span class="nb">&amp;EACH</span>
+                MD 1
+            <span class="nb">&amp;END</span> EACH
+        <span class="nb">&amp;END</span> RESTART
+    <span class="nb">&amp;END</span> PRINT
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Finally, we close our motion section with</p>
+</div>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span><span class="nb">&amp;END</span> MOTION
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-your-simulation">
+<h2>Running your simulation<a class="headerlink" href="#running-your-simulation" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>You’ve made it! Your input file <em>Argon_Simulation.inp</em> is now complete!</p>
+<p>You can run the simulation using</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp2k.sopt<span class="w"> </span>-i<span class="w"> </span>Argon_Simulation.inp
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Here <em>-i</em> specifies the input file. You will get 4 files
+- <cite>Argon_Simulation-pos.xyz</cite> with the atomic coordinates
+- <cite>Argon_Simulation-frc.xyz</cite> with the force on each atom
+- <cite>Argon_Simulation-vel.xyz</cite> with the velocity on each atom
+- <cite>Argon_Simulation-n.restart</cite> which is a restart file for the simulation</p>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../auto_examples/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Examples</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, IPFM
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Liquid argon with CP2K</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#force-calculation-with-dft">Force Calculation with DFT</a><ul>
+<li><a class="reference internal" href="#system-definition">System definition</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#molecular-dynamics">Molecular dynamics</a><ul>
+<li><a class="reference internal" href="#writing-coordinates-and-forces">Writing coordinates and forces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-your-simulation">Running your simulation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
