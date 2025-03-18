@@ -1,11 +1,5 @@
 pages:
   stage: deploy
-  script:
-  - mkdir .public
-  - cp -r build/html .public
-  - mv .public public
-  artifacts:
-    paths:
-    - public
+  publish: build/html
   only:
   - main
