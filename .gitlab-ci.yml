@@ -1,5 +1,8 @@
-pages:
-  stage: deploy
-  publish: build/html
-  only:
-  - main
+deploy-pages:
+  script:
+    - mkdir .public
+    - cp -r tutorials/build/html .public
+    - mv .public public
+  pages: true  # specifies that this is a Pages job and publishes the default public directory
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
