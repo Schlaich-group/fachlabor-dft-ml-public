@@ -1,0 +1,328 @@
+{
+ "PROJECT_PATH": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PosixPath"
+  }
+ ],
+ "Path": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PurePath"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  }
+ ],
+ "Potential": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "quippy.potential",
+   "module_short": "quippy.potential",
+   "name": "Potential"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "quippy",
+   "module_short": "quippy",
+   "name": "Potential"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase.calculators.calculator",
+   "module_short": "ase.calculators.calculator",
+   "name": "Calculator"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase.calculators",
+   "module_short": "ase.calculators",
+   "name": "Calculator"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase",
+   "module_short": "ase",
+   "name": "Calculator"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase.calculators.calculator",
+   "module_short": "ase.calculators.calculator",
+   "name": "BaseCalculator"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase.calculators",
+   "module_short": "ase.calculators",
+   "name": "BaseCalculator"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase",
+   "module_short": "ase",
+   "name": "BaseCalculator"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase.calculators.abc",
+   "module_short": "ase.calculators.abc",
+   "name": "GetPropertiesMixin"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase.calculators",
+   "module_short": "ase.calculators",
+   "name": "GetPropertiesMixin"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "ase",
+   "module_short": "ase",
+   "name": "GetPropertiesMixin"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "abc",
+   "module_short": "abc",
+   "name": "ABC"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "quippy.potential",
+   "module_short": "quippy.potential",
+   "name": "Potential"
+  }
+ ],
+ "RERUN_GAP": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "bool"
+  }
+ ],
+ "ase.io.read": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "ase.io",
+   "module_short": "ase.io",
+   "name": "read"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "ase.io",
+   "module_short": "ase.io",
+   "name": "read"
+  }
+ ],
+ "gap_fit_cmd": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "str"
+  }
+ ],
+ "np.array": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "builtin_function_or_method"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "array"
+  }
+ ],
+ "np.average": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "average"
+  }
+ ],
+ "np.round": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "round"
+  }
+ ],
+ "np.shape": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "shape"
+  }
+ ],
+ "np.sqrt": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "ufunc"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "sqrt"
+  }
+ ],
+ "np.sum": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "sum"
+  }
+ ],
+ "np.var": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "var"
+  }
+ ],
+ "os.chdir": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "builtin_function_or_method"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "os",
+   "module_short": "os",
+   "name": "chdir"
+  }
+ ],
+ "plt.subplots": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "subplots"
+  }
+ ],
+ "subprocess.run": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "subprocess",
+   "module_short": "subprocess",
+   "name": "run"
+  }
+ ]
+}

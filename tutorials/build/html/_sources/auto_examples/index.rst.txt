@@ -46,23 +46,6 @@ Examples
     </div>
 
 
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Example script with invalid Python syntax ">
-
-.. only:: html
-
-  .. image:: /auto_examples/images/thumb/sphx_glr_plot_gap_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_plot_gap.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">SyntaxError</div>
-    </div>
-
-
 .. thumbnail-parent-div-close
 
 .. raw:: html
@@ -75,7 +58,6 @@ Examples
 
    /auto_examples/plot_rdf
    /auto_examples/preprocess_dft
-   /auto_examples/plot_gap
 
 
 .. only:: html

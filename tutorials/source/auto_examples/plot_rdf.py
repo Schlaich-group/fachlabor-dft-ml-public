@@ -25,12 +25,12 @@ from MDAnalysis.analysis.rdf import InterRDF
 # %%
 # Then we define our project path. Replace the path with your own project path
 
-PROJECT_PATH=Path("/home/kira/Git/fachlabor-dft-ml/solutions/dft")
+PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions/")
 
 # %%
 # Next, we load our simulation output.
 
-universe = mda.Universe(PROJECT_PATH / "Argon_Simulation-pos-1.xyz")
+universe = mda.Universe(PROJECT_PATH / "dft"/ "Argon_Simulation-pos-1.xyz")
 
 # %%
 ## The Universe object contains the atomic positions for each timestep. 
@@ -72,5 +72,5 @@ plt.ylabel("g(r)")
 # %%
 # and save our figure
 
-plt.savefig(PROJECT_PATH / "rdf.png", dpi=300)
+plt.savefig(PROJECT_PATH / "lammps" / "rdf.png", dpi=300)
 

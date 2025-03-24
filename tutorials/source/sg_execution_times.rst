@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.202** total execution time for 3 files **from all galleries**:
+**00:06.290** total execution time for 3 files **from all galleries**:
 
 .. container::
 
@@ -32,11 +32,11 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_plot_gap.py` (``examples/plot_gap.py``)
-     - 00:00.202
-     - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_rdf.py` (``examples/plot_rdf.py``)
-     - 00:00.000
+     - 00:06.049
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_gap.py` (``examples/plot_gap.py``)
+     - 00:00.241
      - 0.0
    * - :ref:`sphx_glr_auto_examples_preprocess_dft.py` (``examples/preprocess_dft.py``)
      - 00:00.000

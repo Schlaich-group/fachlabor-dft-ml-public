@@ -17,7 +17,7 @@ ureg = pint.UnitRegistry()
 
 # %%
 # We set our project path as
-PROJECT_PATH = Path("/home/kira/Git/fachlabor-dft-ml/solutions")
+PROJECT_PATH = Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
 
 # %%
 # Now, we define our conversion constants

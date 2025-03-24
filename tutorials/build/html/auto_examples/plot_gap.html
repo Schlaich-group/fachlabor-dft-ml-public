@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Machine learning atomic interactions with GAP" href="../ml/ml_atomic_interactions.html" /><link rel="prev" title="Preprocessing DFT Data" href="preprocess_dft.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>SyntaxError - Machine Learning of Atomistic Interactions documentation</title>
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Learn forces and energies with GAP - Machine Learning of Atomistic Interactions documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
@@ -202,18 +202,7 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">SyntaxError</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
-</ul>
-
+  
 </div>
 </div>
 
@@ -257,21 +246,11 @@
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-plot-gap-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code.</p>
 </div>
-<section class="sphx-glr-example-title" id="syntaxerror">
-<span id="sphx-glr-auto-examples-plot-gap-py"></span><h1>SyntaxError<a class="headerlink" href="#syntaxerror" title="Link to this heading">¶</a></h1>
-<p>Example script with invalid Python syntax</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Learn forces and energies with GAP</span>
-<span class="sd">==================================</span>
-
-<span class="sd">In this tutorial you will learn how to learn energies and forces using GAP.</span>
-
-<span class="sd">We will need quip and ase</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<section class="sphx-glr-example-title" id="learn-forces-and-energies-with-gap">
+<span id="sphx-glr-auto-examples-plot-gap-py"></span><h1>Learn forces and energies with GAP<a class="headerlink" href="#learn-forces-and-energies-with-gap" title="Link to this heading">¶</a></h1>
+<p>In this tutorial you will learn how to learn energies and forces using GAP.</p>
+<p>We will need quip and ase</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">ase</span>
@@ -281,50 +260,41 @@ to download the full example code.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">quippy.potential</span><span class="w"> </span><span class="kn">import</span> <span class="n">Potential</span>
 
-<span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/home/kira/Git/fachlabor-dft-ml/solutions&quot;</span><span class="p">)</span>
+<span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/work/amam/ckf7015/fachlabor-dft-ml/solutions&quot;</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">PROJECT_PATH</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/kira/Git/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py&quot;</span>, line <span class="m">20</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="kn">from</span><span class="w"> </span><span class="nn">quippy.potential</span><span class="w"> </span><span class="kn">import</span> <span class="n">Potential</span>
-  File <span class="nb">&quot;/home/kira/Git/fachlabor-dft-ml/pythonenv/lib/python3.9/site-packages/quippy/__init__.py&quot;</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">quippy._quippy</span>
-<span class="gr">ImportError</span>: <span class="n">numpy.core.multiarray failed to import</span>
-</pre></div>
-</div>
 <p>Next, we write a little bash script to run the gap_fit program.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">gap_fit_cmd</span> <span class="o">=</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">gap_fit e0_method=average \</span>
-<span class="sd">        at_file=gap/train_500.xyz \</span>
-<span class="sd">        gap={distance_2b \</span>
-<span class="sd">                cutoff=6.0 \</span>
-<span class="sd">                covariance_type=ard_se \</span>
-<span class="sd">                delta=1 \</span>
-<span class="sd">                theta_uniform=1.0 \</span>
-<span class="sd">                sparse_method=uniform \</span>
-<span class="sd">                n_sparse=300 \</span>
-<span class="sd">                Z1=18 Z2=18 :\</span>
-<span class="sd">            soap \</span>
-<span class="sd">                l_max=6 \</span>
-<span class="sd">                n_max=6 \</span>
-<span class="sd">                atom_sigma=0.5 \</span>
-<span class="sd">                zeta=4 \</span>
-<span class="sd">                cutoff=6.0 \</span>
-<span class="sd">                cutoff_transition_width=0.5 \</span>
-<span class="sd">                covariance_type=dot_product \</span>
-<span class="sd">                n_sparse=300 \</span>
-<span class="sd">                sparse_method=random \</span>
-<span class="sd">                delta=1.0 \</span>
-<span class="sd">                n_Z=1 Z={18}} \</span>
-<span class="sd">        gp_file=gap/SOAP_500.xml \</span>
-<span class="sd">        default_sigma={0.003 0.15 0 0} \</span>
-<span class="sd">        sparse_jitter=1.0e-10 \</span>
-<span class="sd">        force_parameter_name=forces \</span>
-<span class="sd">        energy_parameter_name=energy</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">gap_fit_cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">gap_fit e0_method=average </span><span class="se">\</span>
+<span class="s2">        at_file=gap/train_500.xyz </span><span class="se">\</span>
+<span class="s2">        gap={distance_2b </span><span class="se">\</span>
+<span class="s2">                cutoff=6.0 </span><span class="se">\</span>
+<span class="s2">                covariance_type=ard_se </span><span class="se">\</span>
+<span class="s2">                delta=1 </span><span class="se">\</span>
+<span class="s2">                theta_uniform=1.0 </span><span class="se">\</span>
+<span class="s2">                sparse_method=uniform </span><span class="se">\</span>
+<span class="s2">                n_sparse=300 </span><span class="se">\</span>
+<span class="s2">                Z1=18 Z2=18 :</span><span class="se">\</span>
+<span class="s2">            soap </span><span class="se">\</span>
+<span class="s2">                l_max=6 </span><span class="se">\</span>
+<span class="s2">                n_max=6 </span><span class="se">\</span>
+<span class="s2">                atom_sigma=0.5 </span><span class="se">\</span>
+<span class="s2">                zeta=4 </span><span class="se">\</span>
+<span class="s2">                cutoff=6.0 </span><span class="se">\</span>
+<span class="s2">                cutoff_transition_width=0.5 </span><span class="se">\</span>
+<span class="s2">                covariance_type=dot_product </span><span class="se">\</span>
+<span class="s2">                n_sparse=300 </span><span class="se">\</span>
+<span class="s2">                sparse_method=random </span><span class="se">\</span>
+<span class="s2">                delta=1.0 </span><span class="se">\</span>
+<span class="s2">                n_Z=1 Z=</span><span class="si">{18}</span><span class="s2">} </span><span class="se">\</span>
+<span class="s2">        gp_file=gap/SOAP_500.xml </span><span class="se">\</span>
+<span class="s2">        default_sigma={0.003 0.15 0 0} </span><span class="se">\</span>
+<span class="s2">        sparse_jitter=1.0e-10 </span><span class="se">\</span>
+<span class="s2">        force_parameter_name=forces </span><span class="se">\</span>
+<span class="s2">        energy_parameter_name=energy</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">RERUN_GAP</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
@@ -460,7 +430,20 @@ We execute our script with</p>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/force_plot_validate_500.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.202 seconds)</p>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py&quot;</span>, line <span class="m">71</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">soap</span> <span class="o">=</span> <span class="n">Potential</span><span class="p">(</span><span class="n">param_filename</span><span class="o">=</span><span class="n">PROJECT_PATH</span><span class="o">/</span><span class="s2">&quot;gap&quot;</span><span class="o">/</span><span class="s2">&quot;SOAP_500.xml&quot;</span><span class="p">)</span>
+<span class="w">           </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+  File <span class="nb">&quot;/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential.py&quot;</span>, line <span class="m">92</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_quip_potential</span> <span class="o">=</span> <span class="n">quippy</span><span class="o">.</span><span class="n">potential_module</span><span class="o">.</span><span class="n">Potential</span><span class="p">(</span><span class="n">args_str</span><span class="o">=</span><span class="n">args_str</span><span class="p">,</span> <span class="n">param_str</span><span class="o">=</span><span class="n">param_str</span><span class="p">)</span>
+<span class="w">                           </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+  File <span class="nb">&quot;/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential_module.py&quot;</span>, line <span class="m">241</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="n">result</span> <span class="o">=</span> <span class="n">quippy</span><span class="o">.</span><span class="n">_quippy</span><span class="o">.</span><span class="n">f90wrap_potential_initialise</span><span class="p">(</span><span class="n">args_str</span><span class="o">=</span><span class="n">args_str</span><span class="p">,</span> <span class="n">pot1</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">pot1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">pot1</span><span class="o">.</span><span class="n">_handle</span><span class="p">),</span> \
+<span class="w">             </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="gr">RuntimeError</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.241 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-gap-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a07e0e663068e7ea01eb3cc780f041ba/plot_gap.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gap.ipynb</span></code></a></p>
@@ -480,26 +463,8 @@ We execute our script with</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../ml/ml_atomic_interactions.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Machine learning atomic interactions with GAP</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="preprocess_dft.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Preprocessing DFT Data</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -525,7 +490,7 @@ We execute our script with</p>
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
     </body>

@@ -19,13 +19,12 @@ import matplotlib
 import os
 from quippy.potential import Potential
 
-PROJECT_PATH=Path("/home/kira/Git/fachlabor-dft-ml/solutions")
+PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
 os.chdir(PROJECT_PATH)
 # %%
 # Next, we write a little bash script to run the gap_fit program. 
 
-gap_fit_cmd = 
-"""
+gap_fit_cmd = """
 gap_fit e0_method=average \
         at_file=gap/train_500.xyz \
 	    gap={distance_2b \

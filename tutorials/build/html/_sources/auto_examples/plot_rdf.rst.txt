@@ -59,7 +59,7 @@ Then we define our project path. Replace the path with your own project path
 .. code-block:: Python
 
 
-    PROJECT_PATH=Path("/home/kira/Git/fachlabor-dft-ml/solutions/dft")
+    PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions/")
 
 
 
@@ -77,7 +77,7 @@ Next, we load our simulation output.
 .. code-block:: Python
 
 
-    universe = mda.Universe(PROJECT_PATH / "Argon_Simulation-pos-1.xyz")
+    universe = mda.Universe(PROJECT_PATH / "dft"/ "Argon_Simulation-pos-1.xyz")
 
 
 
@@ -194,10 +194,10 @@ We then run the analysis with
 
  .. code-block:: none
 
-    /home/kira/kira_env/lib/python3.13/site-packages/MDAnalysis/analysis/base.py:522: UserWarning: Reader has no dt information, set to 1.0 ps
+    /fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/MDAnalysis/analysis/base.py:522: UserWarning: Reader has no dt information, set to 1.0 ps
       self.times[idx] = ts.time
 
-    <MDAnalysis.analysis.rdf.InterRDF object at 0x7ae65a1e6cf0>
+    <MDAnalysis.analysis.rdf.InterRDF object at 0x7f6b8397b110>
 
 
 
@@ -228,7 +228,7 @@ Next, we plot our results
  .. code-block:: none
 
 
-    Text(42.722222222222214, 0.5, 'g(r)')
+    Text(42.597222222222214, 0.5, 'g(r)')
 
 
 
@@ -241,7 +241,7 @@ and save our figure
 .. code-block:: Python
 
 
-    plt.savefig(PROJECT_PATH / "rdf.png", dpi=300)
+    plt.savefig(PROJECT_PATH / "lammps" / "rdf.png", dpi=300)
 
 
 
@@ -258,7 +258,7 @@ and save our figure
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.540 seconds)
+   **Total running time of the script:** (0 minutes 6.049 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_rdf.py:

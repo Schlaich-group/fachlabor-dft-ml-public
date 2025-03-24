@@ -18,25 +18,17 @@
 .. _sphx_glr_auto_examples_plot_gap.py:
 
 
-SyntaxError
-===========
+Learn forces and energies with GAP
+==================================
 
-Example script with invalid Python syntax
+In this tutorial you will learn how to learn energies and forces using GAP.
 
-.. GENERATED FROM PYTHON SOURCE LINES 1-24
+We will need quip and ase
+
+.. GENERATED FROM PYTHON SOURCE LINES 11-24
 
 .. code-block:: Python
 
-    #!/usr/bin/python
-
-    """
-    Learn forces and energies with GAP
-    ==================================
-
-    In this tutorial you will learn how to learn energies and forces using GAP.
-
-    We will need quip and ase
-    """
 
     import numpy as np
     import subprocess
@@ -48,20 +40,11 @@ Example script with invalid Python syntax
     import os
     from quippy.potential import Potential
 
-    PROJECT_PATH=Path("/home/kira/Git/fachlabor-dft-ml/solutions")
+    PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
     os.chdir(PROJECT_PATH)
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/kira/Git/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py", line 20, in <module>
-        from quippy.potential import Potential
-      File "/home/kira/Git/fachlabor-dft-ml/pythonenv/lib/python3.9/site-packages/quippy/__init__.py", line 2, in <module>
-        import quippy._quippy
-    ImportError: numpy.core.multiarray failed to import
 
 
 
@@ -70,13 +53,12 @@ Example script with invalid Python syntax
 
 Next, we write a little bash script to run the gap_fit program. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-61
+.. GENERATED FROM PYTHON SOURCE LINES 26-60
 
 .. code-block:: Python
 
 
-    gap_fit_cmd = 
-    """
+    gap_fit_cmd = """
     gap_fit e0_method=average \
             at_file=gap/train_500.xyz \
     	    gap={distance_2b \
@@ -110,12 +92,18 @@ Next, we write a little bash script to run the gap_fit program.
     RERUN_GAP = False
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-64
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 61-63
 
 Let's walk through the different options...( long long walkthrough )
 We execute our script with 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-68
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
 
 .. code-block:: Python
 
@@ -124,11 +112,17 @@ We execute our script with
         subprocess.run(gap_fit_cmd, cwd=str(PROJECT_PATH))
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-70
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 68-69
 
 Next, we want to use the generated GAP potential to calculate the energies and forces. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-195
+.. GENERATED FROM PYTHON SOURCE LINES 69-194
 
 .. code-block:: Python
 
@@ -259,9 +253,29 @@ Next, we want to use the generated GAP potential to calculate the energies and f
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py", line 71, in <module>
+        soap = Potential(param_filename=PROJECT_PATH/"gap"/"SOAP_500.xml")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential.py", line 92, in __init__
+        self._quip_potential = quippy.potential_module.Potential(args_str=args_str, param_str=param_str)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential_module.py", line 241, in __init__
+        result = quippy._quippy.f90wrap_potential_initialise(args_str=args_str, pot1=(None if pot1 is None else pot1._handle), \
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    RuntimeError
+
+
+
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.202 seconds)
+   **Total running time of the script:** (0 minutes 0.241 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_gap.py:

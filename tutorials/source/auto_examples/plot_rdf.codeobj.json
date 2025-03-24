@@ -54,13 +54,6 @@
   {
    "is_class": false,
    "is_explicit": false,
-   "module": "pathlib._local",
-   "module_short": "pathlib",
-   "name": "PosixPath"
-  },
-  {
-   "is_class": false,
-   "is_explicit": false,
    "module": "pathlib",
    "module_short": "pathlib",
    "name": "PosixPath"
@@ -70,13 +63,6 @@
   {
    "is_class": true,
    "is_explicit": false,
-   "module": "pathlib._local",
-   "module_short": "pathlib",
-   "name": "Path"
-  },
-  {
-   "is_class": true,
-   "is_explicit": false,
    "module": "pathlib",
    "module_short": "pathlib",
    "name": "Path"
@@ -84,44 +70,9 @@
   {
    "is_class": true,
    "is_explicit": false,
-   "module": "pathlib._abc",
-   "module_short": "pathlib._abc",
-   "name": "PathBase"
-  },
-  {
-   "is_class": true,
-   "is_explicit": false,
-   "module": "pathlib",
-   "module_short": "pathlib",
-   "name": "PathBase"
-  },
-  {
-   "is_class": true,
-   "is_explicit": false,
-   "module": "pathlib._local",
-   "module_short": "pathlib",
-   "name": "PurePath"
-  },
-  {
-   "is_class": true,
-   "is_explicit": false,
    "module": "pathlib",
    "module_short": "pathlib",
    "name": "PurePath"
-  },
-  {
-   "is_class": true,
-   "is_explicit": false,
-   "module": "pathlib._abc",
-   "module_short": "pathlib._abc",
-   "name": "PurePathBase"
-  },
-  {
-   "is_class": true,
-   "is_explicit": false,
-   "module": "pathlib",
-   "module_short": "pathlib",
-   "name": "PurePathBase"
   },
   {
    "is_class": false,

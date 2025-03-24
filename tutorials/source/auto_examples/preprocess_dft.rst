@@ -45,7 +45,7 @@ We set our project path as
 
 .. code-block:: Python
 
-    PROJECT_PATH = Path("/home/kira/Git/fachlabor-dft-ml/solutions")
+    PROJECT_PATH = Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 23-24

@@ -15,5 +15,4 @@ Machine Learning of Atomistic Interactions Tutorials
     auto_examples/index
     ml/ml_atomic_interactions
 
-
-Based on the tutorials by Simon Gravelle: lammpstutorials.github.io
+   Note: The tutorials are still a work in progress and incomplete.
