@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""".. _rdf
+""".. _rdf:
 
 Calculating the radial distribution function
 ********************************************
