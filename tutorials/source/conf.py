@@ -11,9 +11,9 @@ sys.path.append(".")
 import cp2klexer
 from sphinx.highlighting import lexers
 
-project = 'Machine Learning of Atomistic Interactions'
+project = 'Machine Learning of Atomic Interactions'
 copyright = '2025, IPFM'
-author = 'Kira Fischer and Prof. Dr. Alexander Schlaich, IPFM'
+author = 'Kira Fischer and Alexander Schlaich, IPFM'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
