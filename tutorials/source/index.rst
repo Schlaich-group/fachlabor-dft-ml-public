@@ -15,4 +15,4 @@ Machine Learning of Atomistic Interactions Tutorials
     auto_examples/index
     ml/ml_atomic_interactions
 
-   Note: The tutorials are still a work in progress and incomplete.
+Note: The tutorials are still a work in progress and incomplete.
