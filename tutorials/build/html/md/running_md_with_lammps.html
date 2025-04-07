@@ -1,0 +1,551 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Calculating the radial distribution function" href="../auto_examples/plot_rdf.html" /><link rel="prev" title="Day 3: Molecular dynamics simulations with ML potentials" href="index.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Molecular Dynamics with LAMMPS interfaced to QUIP - Machine Learning of Atomic Interactions documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Machine Learning of Atomic Interactions  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Machine Learning of Atomic Interactions  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../auto_examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_gap.html">Using GAP on validation data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/md/running_md_with_lammps.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="molecular-dynamics-with-lammps-interfaced-to-quip">
+<span id="lammps-with-gap"></span><h1>Molecular Dynamics with LAMMPS interfaced to QUIP<a class="headerlink" href="#molecular-dynamics-with-lammps-interfaced-to-quip" title="Link to this heading">¶</a></h1>
+<div class="abstract docutils container">
+<p>In the following we will use LAMMPS (<strong>L</strong>arge-scale <strong>A</strong>tomic/<strong>M</strong>olecular <strong>M</strong>assively <strong>P</strong>arallel <strong>S</strong>imulator)
+interfaced with QUIP, which you know from the previous tutorial, to run a molecular dynamics simulation.</p>
+</div>
+<div class="admonition-requirements admonition">
+<p class="admonition-title">Requirements</p>
+<ul class="simple">
+<li><p>Trained GAP model (from last tutorial)</p></li>
+<li><p>QUIP (preinstalled)</p></li>
+<li><p>LAMMPS binary (preinstalled)</p></li>
+</ul>
+</div>
+<section id="brief-introduction-into-lammps">
+<h2>Brief introduction into LAMMPS<a class="headerlink" href="#brief-introduction-into-lammps" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>LAMMPS is a powerful, open-source molecular dynamics (MD) software package used to simulate atomic,
+molecular, and solid-state systems. It is highly scalable, running efficiently on single workstations
+as well as on supercomputers with hundreds of processors. Due to its modular design, LAMMPS can be
+easily extended with new features and capabilities, making it suitable for a wide range of
+applications in materials science, chemistry, and biology.</p>
+</div>
+</section>
+<section id="input-preparation">
+<h2>Input preparation<a class="headerlink" href="#input-preparation" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>Even though LAMMPS only requires one input file, it is common to split the input into several files
+for better organization and readability.</p>
+<p>These three main types of files used in LAMMPS are:</p>
+<ul class="simple">
+<li><p><strong>input script</strong>: Actual input file, which is a text file containing LAMMPS commands that define the
+simulation parameters and protocols, such as the time step, thermostat, simulation time and other settings.</p></li>
+<li><p><strong>data file</strong>: Contains the initial configuration of the system, including atomic positions, types,
+and other properties.</p></li>
+<li><p><strong>potential file</strong>: Specifies the interatomic potential to be used in the simulation, which can be
+a pre-defined potential or a custom one.</p></li>
+</ul>
+<p>The latter two are then imported into the input script.
+In this tutorial, we will use a GAP model as the interatomic potential, which we trained in the
+previous tutorial, so no potential file is needed.
+We also do not need a data file, as the setup is rather simple and we will therefore generate the initial
+configuration directly in the input script.
+So the only file we need to prepare is the input script.
+In the “md” directory, you will find an almost finished version of it as “Ar.in”:</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">your</span><span class="o">-</span><span class="n">project</span>
+<span class="o">|</span>   <span class="o">|---</span><span class="n">dft</span>
+<span class="o">|</span>   <span class="o">|---</span><span class="n">gap</span>
+<span class="o">|</span>   <span class="o">|---</span><span class="n">md</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Ar</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>It is designed to guide users who are new to LAMMPS through their first simulation.
+Next to the commands, you will find some information which either briefly explain what is done at this point or
+give some hints.  It is a good praxis to also check out the official LAMMPS documentation, which provides more
+in-depth information and examples of each command. It can be found here
+<a class="reference external" href="https://docs.lammps.org/Manual.html">here</a>. The best entry is probably the section about the
+<a class="reference external" href="https://docs.lammps.org/Commands_input.html">LAMMPS input script language</a>.</p>
+</div>
+<div class="justify docutils container">
+<p>First, we want to set some general parameters as the unit system being used throughout
+the input script and output files.
+We will use the “metal” unit system, which is mostly used for metallic systems. It defines e.g. the
+following units:
+- energy in eV
+- mass in grams/mole
+- distance in Angstroms
+- time in picoseconds
+- temperature in Kelvin</p>
+<p>Periodic boundary conditions (PBCs) are applied in x-, y-, and z-direction. An atom style is set,
+which defines which attributes are associated with every atoms. In this case, we use the “atomic” style,
+meaning that every atom has a tag, type, x, v, f, image, mask.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">units</span><span class="w">           </span><span class="n">metal</span>
+<span class="k">boundary</span><span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">p</span>
+<span class="k">atom_style</span><span class="w">      </span><span class="n">atomic</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Next, we build our simulation box. We will use a cubic box with a size of 17.0742 Angstroms in each direction.
+Therefore we define a region called “myRegion” and then create a box by setting the number of atom types
+to 1 (in this case, we only have one type of atom, which is Argon) and assigning it to the region we just created.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">region          </span><span class="nv nv-Identifier">myRegion</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">17.0742</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">17.0742</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">17.0742</span>
+<span class="k">create_box      </span><span class="nv nv-Identifier">1</span><span class="w"> </span><span class="nv nv-Identifier">myRegion</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Now we can start populating our simulation box with atoms.
+We will read in the file “argon.xyz” that contains the coordinates of the atoms, and assign types, masses, a group (“Ar”) and velocities to them.
+LAMMPS does not know about elements as defined in the periodic table, so we need to define all relevant attributes of our atoms by ourselves.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">read_dump</span><span class="w">       </span><span class="n">argon.xyz</span><span class="w"> </span><span class="m">0</span><span class="w">      </span><span class="n">x</span><span class="w">    </span><span class="n">y</span><span class="w">      </span><span class="n">z</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">yes</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">xyz</span>
+<span class="k">set</span><span class="w">                 </span><span class="n">atom</span><span class="w">      </span><span class="m">1</span><span class="o">*</span><span class="m">108</span><span class="w">  </span><span class="n">type</span><span class="w"> </span><span class="m">1</span>
+<span class="k">mass</span><span class="w">            </span><span class="m">1</span><span class="w">         </span><span class="m">39.948</span>
+<span class="k">group           </span><span class="nv nv-Identifier">Ar</span><span class="w">        </span><span class="n">type</span><span class="w">   </span><span class="m">1</span>
+<span class="k">velocity        </span><span class="nv nv-Identifier">all</span><span class="w">       </span><span class="n">create</span><span class="w"> </span><span class="m">900</span><span class="w">  </span><span class="m">132465</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>In this section, we will define the potential that will be used in the simulation.
+Without a potential, LAMMPS wouldn’t not know how to calculate the forces acting on the atoms.
+We will use the pair_style quip command, which interaces to our machine learned potential (MLP) model that was trained on DFT data.
+We also need to tell LAMMPS that the potentials should be used for all possible atom pairs. This is done using the asterisk (*) twice, which means
+that we consider the interaction of all atom types with each other followed bt the path to the MLP file.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">pair_style</span><span class="w">      </span><span class="n">quip</span>
+<span class="k">pair_coeff</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">..</span><span class="o">/</span><span class="n">gap</span><span class="o">/</span><span class="n">SOAP_500.xml</span><span class="w"> </span><span class="s">&quot;Potential xml_label=GAP_2025_2_21_60_23_19_51_451&quot;</span><span class="w"> </span><span class="m">18</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Next, we set the time step for the simulation. The time step is the interval at which the positions and velocities of the atoms are updated by
+integration Newton’s equation of motion. It is important to choose a timestep that is small enough to accurately capture the dynamics of the system
+(especially the fast hydrogen vibrations!), but not so small that it slows down the simulation unnecessarily.
+We will use a time step of 0.001 picoseconds (ps) = 1 femtoseconds (fs), which is a common choice for MD simulations.</p>
+</div>
+<div class="admonition-caution admonition">
+<p class="admonition-title">Caution</p>
+<p>Watch out which unit system your are using!</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">timestep</span><span class="w">        </span><span class="m">0.001</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>To correctly sample the NVT (= number of particles, volume and temperature are constant), we need to apply a thermostat
+to the system’s particles, which is achieved by a “fix”.</p>
+</div>
+<div class="admonition-info admonition">
+<p class="admonition-title">Info</p>
+<p>In LAMMPs’ language a “fix” does not literally mean that e.g. an atom is fixed in space, it’s rather an operation that is applied during the
+simulation.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">fix             </span><span class="nv nv-Identifier">myThermostat</span><span class="w"> </span><span class="nv nv-Identifier">all</span><span class="w"> </span><span class="n">nvt</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="m">85.0</span><span class="w"> </span><span class="m">85.0</span><span class="w"> </span><span class="nv">$(50*dt)</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>If we want to retrieve an observable that changes during the simulation, e.g. the temperature of the system, we need to
+define a compute command.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">compute         </span><span class="nv nv-Identifier">myTemp</span><span class="w"> </span><span class="nv nv-Identifier">all</span><span class="w"> </span><span class="n">temp</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>The dump command is used to output data from the simulation.
+The data can be written to a file in different formats, such as xyz, custom, or atom.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">dump            </span><span class="nv nv-Identifier">myDump1</span><span class="w"> </span><span class="nv nv-Identifier">all</span><span class="w">     </span><span class="n">custom</span><span class="w">  </span><span class="m">100</span><span class="w"> </span><span class="n">Ar_full.lammpstraj</span><span class="w"> </span><span class="n">id</span><span class="w">                  </span><span class="n">type</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="n">vx</span><span class="w"> </span><span class="n">vy</span><span class="w"> </span><span class="n">vz</span><span class="w"> </span><span class="n">fx</span><span class="w"> </span><span class="n">fy</span><span class="w"> </span><span class="n">fz</span>
+<span class="k">dump_modify     </span><span class="nv nv-Identifier">myDump1</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="n">Ar</span>
+<span class="k">dump_modify     </span><span class="nv nv-Identifier">myDump1</span><span class="w"> </span><span class="n">sort</span><span class="w">    </span><span class="n">id</span>
+<span class="c"># dump_modify     myDump1 append  yes</span>
+
+<span class="k">dump            </span><span class="nv nv-Identifier">myDump2</span><span class="w">         </span><span class="nv nv-Identifier">all</span><span class="w">     </span><span class="n">xyz</span><span class="w"> </span><span class="m">10</span><span class="w">                 </span><span class="n">Ar_Trajectories.xyz</span>
+<span class="k">dump_modify     </span><span class="nv nv-Identifier">myDump2</span><span class="w">         </span><span class="n">element</span><span class="w"> </span><span class="n">Ar</span>
+<span class="c"># dump_modify     myDump2         append  yes</span>
+
+<span class="k">log</span><span class="w">             </span><span class="n">log.argon</span><span class="w">       </span><span class="n">append</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>It considered good practice to write restart files during the simulation.
+Restart files are used to save the current state of the simulation, allowing you to pause and resume the simulation later.
+This is especially useful for long simulations, where you might want to save the state periodically in case of a crash or other issues.
+They can also be used to analyze the simulation at different points in time or to continue the simulation from a specific point.
+In this case, we will write restart files every 1000 steps.
+LAMMPS will toggle between the two files defined and overwrite each every other time.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">restart</span><span class="w">             </span><span class="m">1000</span><span class="w"> </span><span class="n">Ar_1.restart</span><span class="w"> </span><span class="n">A_2.restart</span>
+</pre></div>
+</div>
+<div class="justify docutils container">
+<p>Finally, we need to define the output frequency of the simulation.
+The thermo command specifies how often LAMMPS will print thermodynamic information to the screen or log file.
+In this case, we set it to 1, meaning that LAMMPS will print the information every time step.
+The thermo_style command specifies the format of the output. In this case, we want to see the step number, time, temperature, density and pressure.
+The run command specifies the number of time steps to run the simulation. In this case, we set it to 100000, which corresponds to 100 ps.</p>
+</div>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">thermo</span><span class="w">          </span><span class="m">1</span>
+<span class="k">thermo_style</span><span class="w">    </span><span class="n">custom</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="n">density</span><span class="w"> </span><span class="n">press</span>
+<span class="k">run</span><span class="w">             </span><span class="m">100000</span>
+</pre></div>
+</div>
+</section>
+<section id="running-the-simulation">
+<h2>Running the simulation<a class="headerlink" href="#running-the-simulation" title="Link to this heading">¶</a></h2>
+<div class="justify docutils container">
+<p>Now its time to run the simulation. To exploit the full power of out notebook, we will run LAMMPS in parallel
+on all available cores of our machine. This is done using the mpirun command, which is a part of the MPI
+(Message Passing Interface) library. The -np flag specifies the number of processes to run in parallel.
+In this case, we set it to 32, meaning that LAMMPS will use 32 processes.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">32</span><span class="w"> </span>lmp_mpi<span class="w"> </span>-in<span class="w"> </span>Ar.in
+
+
+include::<span class="w"> </span>../auto_examples/plot_rdf.rst
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../auto_examples/plot_rdf.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Calculating the radial distribution function</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Day 3: Molecular dynamics simulations with ML potentials</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, IPFM
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Molecular Dynamics with LAMMPS interfaced to QUIP</a><ul>
+<li><a class="reference internal" href="#brief-introduction-into-lammps">Brief introduction into LAMMPS</a></li>
+<li><a class="reference internal" href="#input-preparation">Input preparation</a></li>
+<li><a class="reference internal" href="#running-the-simulation">Running the simulation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
