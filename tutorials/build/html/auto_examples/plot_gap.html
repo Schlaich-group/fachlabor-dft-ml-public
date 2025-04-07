@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Day 3: Molecular dynamics simulations with ML potentials" href="../md/index.html" /><link rel="prev" title="Fitting GAP" href="gap_fit.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>Learn forces and energies with GAP - Machine Learning of Atomic Interactions documentation</title>
+        <title>Using GAP on validation data - Machine Learning of Atomic Interactions documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
@@ -203,14 +203,35 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Using GAP on validation data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
 </ul>
 
 </div>
@@ -256,69 +277,52 @@
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-plot-gap-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code.</p>
 </div>
-<section class="sphx-glr-example-title" id="learn-forces-and-energies-with-gap">
-<span id="sphx-glr-auto-examples-plot-gap-py"></span><h1>Learn forces and energies with GAP<a class="headerlink" href="#learn-forces-and-energies-with-gap" title="Link to this heading">¶</a></h1>
-<p>In this tutorial you will learn how to learn energies and forces using GAP.</p>
-<p>We will need quip and ase</p>
+<section class="sphx-glr-example-title" id="using-gap-on-validation-data">
+<span id="use-gap"></span><span id="sphx-glr-auto-examples-plot-gap-py"></span><h1>Using GAP on validation data<a class="headerlink" href="#using-gap-on-validation-data" title="Link to this heading">¶</a></h1>
+<p>In this tutorial you will learn to use the trained ml potential on validation data.
+We do this to evaluate how well GAP has learned the energies and forces
+Let us start by importing some Python modules.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ase</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ase.io</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ase</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ase.io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase</span><span class="w"> </span><span class="kn">import</span> <span class="n">Atoms</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">quippy.potential</span><span class="w"> </span><span class="kn">import</span> <span class="n">Potential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/work/amam/ckf7015/fachlabor-dft-ml/solutions&quot;</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">PROJECT_PATH</span><span class="p">)</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;agg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Next, we write a little bash script to run the gap_fit program.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">gap_fit_cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">gap_fit e0_method=average </span><span class="se">\</span>
-<span class="s2">        at_file=gap/train_500.xyz </span><span class="se">\</span>
-<span class="s2">        gap={distance_2b </span><span class="se">\</span>
-<span class="s2">                cutoff=6.0 </span><span class="se">\</span>
-<span class="s2">                covariance_type=ard_se </span><span class="se">\</span>
-<span class="s2">                delta=1 </span><span class="se">\</span>
-<span class="s2">                theta_uniform=1.0 </span><span class="se">\</span>
-<span class="s2">                sparse_method=uniform </span><span class="se">\</span>
-<span class="s2">                n_sparse=300 </span><span class="se">\</span>
-<span class="s2">                Z1=18 Z2=18 :</span><span class="se">\</span>
-<span class="s2">            soap </span><span class="se">\</span>
-<span class="s2">                l_max=6 </span><span class="se">\</span>
-<span class="s2">                n_max=6 </span><span class="se">\</span>
-<span class="s2">                atom_sigma=0.5 </span><span class="se">\</span>
-<span class="s2">                zeta=4 </span><span class="se">\</span>
-<span class="s2">                cutoff=6.0 </span><span class="se">\</span>
-<span class="s2">                cutoff_transition_width=0.5 </span><span class="se">\</span>
-<span class="s2">                covariance_type=dot_product </span><span class="se">\</span>
-<span class="s2">                n_sparse=300 </span><span class="se">\</span>
-<span class="s2">                sparse_method=random </span><span class="se">\</span>
-<span class="s2">                delta=1.0 </span><span class="se">\</span>
-<span class="s2">                n_Z=1 Z=</span><span class="si">{18}</span><span class="s2">} </span><span class="se">\</span>
-<span class="s2">        gp_file=gap/SOAP_500.xml </span><span class="se">\</span>
-<span class="s2">        default_sigma={0.003 0.15 0 0} </span><span class="se">\</span>
-<span class="s2">        sparse_jitter=1.0e-10 </span><span class="se">\</span>
-<span class="s2">        force_parameter_name=forces </span><span class="se">\</span>
-<span class="s2">        energy_parameter_name=energy</span>
-
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">RERUN_GAP</span> <span class="o">=</span> <span class="kc">False</span>
+<p>Then we define our project path. Replace the path with your own project path</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;../../../solutions/&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Let’s walk through the different options…( long long walkthrough )
-We execute our script with</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">RERUN_GAP</span><span class="p">:</span>
-    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">gap_fit_cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">PROJECT_PATH</span><span class="p">))</span>
+<p>Then we load our ML potential.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ml_potential</span> <span class="o">=</span> <span class="n">Potential</span><span class="p">(</span><span class="n">param_filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/SOAP_500.xml&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Next, we want to use the generated GAP potential to calculate the energies and forces.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">soap</span> <span class="o">=</span> <span class="n">Potential</span><span class="p">(</span><span class="n">param_filename</span><span class="o">=</span><span class="n">PROJECT_PATH</span><span class="o">/</span><span class="s2">&quot;gap&quot;</span><span class="o">/</span><span class="s2">&quot;SOAP_500.xml&quot;</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">rms_dict</span><span class="p">(</span><span class="n">x_ref</span><span class="p">,</span> <span class="n">x_pred</span><span class="p">):</span>
+<p>Let us try out the ML potential. First, we create an Atoms object</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span> <span class="o">=</span> <span class="mf">3.3</span> <span class="c1"># angstrom</span>
+<span class="n">two_argon_atoms</span> <span class="o">=</span> <span class="n">Atoms</span><span class="p">(</span><span class="s2">&quot;Ar2&quot;</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">distance</span><span class="p">]])</span>
+<span class="n">two_argon_atoms</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">vacuum</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">two_argon_atoms</span><span class="o">.</span><span class="n">pbc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Then we set the calculator to <code class="docutils literal notranslate"><span class="pre">ml_potential</span></code> and caculate the energy of the system</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">two_argon_atoms</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">ml_potential</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">two_argon_atoms</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:42: FutureWarning: Please use atoms.calc = calc
+  two_argon_atoms.set_calculator(ml_potential)
+-1146.9901101622613
+</pre></div>
+</div>
+<p>To evaluate the ML potential, we will compare predicted energies (and forces) with DFT energies (and forces). To do so, we will load the coordinates, energies and forces from the DFT simulation. Then we will predict the energy for the coordinates using the ML potential, and compare with the reference energies from the DFT simulation.</p>
+<p>To quantify the error, we calculate the root mean square (RMS) error between the reference data and the predicted data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rms_dict</span><span class="p">(</span><span class="n">x_ref</span><span class="p">,</span> <span class="n">x_pred</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Takes two datasets of the same shape and returns a dictionary containing RMS error data&quot;&quot;&quot;</span>
 
     <span class="n">x_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_ref</span><span class="p">)</span>
@@ -334,8 +338,10 @@ We execute our script with</p>
     <span class="n">std_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">error_2</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;rmse&#39;</span><span class="p">:</span> <span class="n">average</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="n">std_</span><span class="p">}</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">energy_plot</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot of energy&#39;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Next, we have a function to plot the predicted energy against the reference energy.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">energy_plot</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot of energy&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plots the distribution of energy per atom on the output vs the input&quot;&quot;&quot;</span>
     <span class="c1"># read files</span>
     <span class="n">in_frames</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
@@ -344,14 +350,15 @@ We execute our script with</p>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of frames </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">in_frames</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;position array has shape </span><span class="si">{</span><span class="n">in_frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">positions</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">in_frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="c1"># list energies</span>
+    <span class="c1"># get reference potential energies calculated by DFT</span>
     <span class="n">ener_in</span> <span class="o">=</span> <span class="p">[</span><span class="n">frame</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">())</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">in_frames</span><span class="p">]</span>
     <span class="n">ener_out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># predict the energies using GAP.</span>
+    <span class="c1"># set our ase calculator to ml_potential and then calculate the energy using that calculator.</span>
     <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span>  <span class="n">in_frames</span><span class="p">:</span>
-        <span class="n">frame</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">soap</span><span class="p">)</span>
+        <span class="n">frame</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">ml_potential</span><span class="p">)</span>
         <span class="n">ener_out</span><span class="o">+=</span><span class="p">[</span><span class="n">frame</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">())]</span>
-    <span class="c1">#ener_out = [frame.get_potential_energy() / len(frame.get_chemical_symbols()) for frame in out_frames]</span>
-    <span class="c1"># scatter plot of the data</span>
+    <span class="c1"># make a scatter plot of the data</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ener_in</span><span class="p">,</span> <span class="n">ener_out</span><span class="p">)</span>
     <span class="c1"># get the appropriate limits for the plot</span>
     <span class="n">for_limits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ener_in</span> <span class="o">+</span><span class="n">ener_out</span><span class="p">)</span>
@@ -371,9 +378,11 @@ We execute our script with</p>
     <span class="n">rmse_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">_rms</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">2e</span><span class="si">}</span><span class="s2"> +- </span><span class="si">{</span><span class="n">_rms</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">2e</span><span class="si">}</span><span class="s2"> eV/atom&quot;</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">rmse_text</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
             <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">force_plot</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;HO&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot of force&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Plots the distribution of firce components per atom on the output vs the input</span>
+</pre></div>
+</div>
+<p>Then, we have a function to plot the predicted force against the reference force.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">force_plot</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;HO&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot of force&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Plots the distribution of force components per atom on the output vs the input</span>
 <span class="sd">        only plots for the given atom type(s)&quot;&quot;&quot;</span>
 
     <span class="n">in_atoms</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
@@ -388,7 +397,7 @@ We execute our script with</p>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">sym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sym_all</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
                 <span class="n">in_force</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">at_in</span><span class="o">.</span><span class="n">get_forces</span><span class="p">()[</span><span class="n">j</span><span class="p">])</span>
-        <span class="n">at_in</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">soap</span><span class="p">)</span>
+        <span class="n">at_in</span><span class="o">.</span><span class="n">set_calculator</span><span class="p">(</span><span class="n">ml_potential</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">sym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sym_all</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">symbol</span><span class="p">:</span>
                 <span class="n">out_force</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">at_in</span><span class="o">.</span><span class="n">get_forces</span><span class="p">()[</span><span class="n">j</span><span class="p">])</span>
@@ -402,13 +411,6 @@ We execute our script with</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">in_force</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="c1"># scatter plot of the data</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">in_force</span><span class="p">,</span> <span class="n">out_force</span><span class="p">)</span>
-    <span class="c1"># get the appropriate limits for the plot</span>
-    <span class="c1">#for_limits = np.array(in_force + out_force)</span>
-    <span class="c1">#flim = (for_limits.min() - 1, for_limits.max() + 1)</span>
-    <span class="c1">#ax.set_xlim(flim)</span>
-    <span class="c1">#ax.set_ylim(flim)</span>
-    <span class="c1"># add line of</span>
-    <span class="c1">#ax.plot(flim, flim, c=&#39;k&#39;)</span>
     <span class="c1"># set labels</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;force by GAP / (eV/Å)&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;force by CP2K / (eV/Å)&#39;</span><span class="p">)</span>
@@ -420,40 +422,39 @@ We execute our script with</p>
     <span class="n">rmse_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">_rms</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">2e</span><span class="si">}</span><span class="s2"> +- </span><span class="si">{</span><span class="n">_rms</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">2e</span><span class="si">}</span><span class="s2"> eV/A&quot;</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">rmse_text</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
             <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">energy_plot</span><span class="p">(</span><span class="s2">&quot;gap/test.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Energy on training data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we plot the error and force correlation plots for the training data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">energy_plot</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/train.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Energy on training data&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/energy_plot_500.png&quot;</span><span class="p">)</span>
 
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">force_plot</span><span class="p">(</span><span class="s2">&quot;gap/test.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Force on training data&quot;</span><span class="p">)</span>
+<span class="n">force_plot</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/train.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Force on training data&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/force_plot_500.png&quot;</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">energy_plot</span><span class="p">(</span><span class="s2">&quot;gap/validate.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Energy on validation data&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/energy_plot_validate_500.png&quot;</span><span class="p">)</span>
-
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">force_plot</span><span class="p">(</span><span class="s2">&quot;gap/validate.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Force on validation data&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/force_plot_validate_500.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py&quot;</span>, line <span class="m">71</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">soap</span> <span class="o">=</span> <span class="n">Potential</span><span class="p">(</span><span class="n">param_filename</span><span class="o">=</span><span class="n">PROJECT_PATH</span><span class="o">/</span><span class="s2">&quot;gap&quot;</span><span class="o">/</span><span class="s2">&quot;SOAP_500.xml&quot;</span><span class="p">)</span>
-<span class="w">           </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-  File <span class="nb">&quot;/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential.py&quot;</span>, line <span class="m">92</span>, in <span class="n">__init__</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_quip_potential</span> <span class="o">=</span> <span class="n">quippy</span><span class="o">.</span><span class="n">potential_module</span><span class="o">.</span><span class="n">Potential</span><span class="p">(</span><span class="n">args_str</span><span class="o">=</span><span class="n">args_str</span><span class="p">,</span> <span class="n">param_str</span><span class="o">=</span><span class="n">param_str</span><span class="p">)</span>
-<span class="w">                           </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-  File <span class="nb">&quot;/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential_module.py&quot;</span>, line <span class="m">241</span>, in <span class="n">__init__</span>
-<span class="w">    </span><span class="n">result</span> <span class="o">=</span> <span class="n">quippy</span><span class="o">.</span><span class="n">_quippy</span><span class="o">.</span><span class="n">f90wrap_potential_initialise</span><span class="p">(</span><span class="n">args_str</span><span class="o">=</span><span class="n">args_str</span><span class="p">,</span> <span class="n">pot1</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">pot1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">pot1</span><span class="o">.</span><span class="n">_handle</span><span class="p">),</span> \
-<span class="w">             </span><span class="pm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-<span class="gr">RuntimeError</span>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_gap_001.png" srcset="../_images/sphx_glr_plot_gap_001.png" alt="Energy on training data" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_gap_002.png" srcset="../_images/sphx_glr_plot_gap_002.png" alt="Plot of force" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Atoms(symbols=&#39;Ar108&#39;, pbc=True, cell=[17.0742, 17.0742, 17.0742], calculator=SinglePointCalculator(...))
+number of frames 500
+position array has shape (108, 3)
+108
+/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:85: FutureWarning: Please use atoms.calc = calc
+  frame.set_calculator(ml_potential)
+7.878274713952334e-06
+/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:126: FutureWarning: Please use atoms.calc = calc
+  at_in.set_calculator(ml_potential)
+54000
+(3,)
+(54000,)
+0.0014386871446798366
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.241 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 4.277 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-gap-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a07e0e663068e7ea01eb3cc780f041ba/plot_gap.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gap.ipynb</span></code></a></p>
@@ -473,8 +474,26 @@ We execute our script with</p>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../md/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Day 3: Molecular dynamics simulations with ML potentials</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="gap_fit.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Fitting GAP</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

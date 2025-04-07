@@ -22,8 +22,8 @@
 Preprocessing DFT Data
 ======================
 
-In this tutorial we will preprocess our DFT data. CP2K generates data with units in ...
-but GAP takes data in units of ...
+In this tutorial we will preprocess our DFT data. CP2K generates data with units in `Hartree` and `Hartree/Bohr`
+but GAP takes data in units of `eV` and `eV/Å`.
 Furthermore, GAP uses slightly different labelling from CP2K. That's why we need to preprocess
 
 We start with importing our python modules. We use tqdm to show a nice progress bar and pint to do unit conversions
@@ -39,13 +39,13 @@ We start with importing our python modules. We use tqdm to show a nice progress 
 
 .. GENERATED FROM PYTHON SOURCE LINES 19-20
 
-We set our project path as
+Then we set our project path. Replace this with your own project path
 
 .. GENERATED FROM PYTHON SOURCE LINES 20-22
 
 .. code-block:: Python
 
-    PROJECT_PATH = Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
+    PROJECT_PATH = Path("../../../solutions")
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 23-24
@@ -206,7 +206,7 @@ We now call the converter on our DFT files
 
 
     _xyz_to_extxyz(
-        outfile=PROJECT_PATH / "gap/train2",
+        outfile=PROJECT_PATH / "gap/trajectory",
         positions=PROJECT_PATH / "dft/Argon_Simulation-pos-1.xyz",
         forces=PROJECT_PATH / "dft/Argon_Simulation-frc-1.xyz",
         lattice=[[17.0742, 0, 0],
@@ -216,7 +216,7 @@ We now call the converter on our DFT files
 
 .. GENERATED FROM PYTHON SOURCE LINES 168-169
 
-The converted file can be found in ``gap/train2.xyz``
+The converted file can be found in ``gap/train.xyz``
 
 
 .. _sphx_glr_download_auto_examples_preprocess_dft.py:

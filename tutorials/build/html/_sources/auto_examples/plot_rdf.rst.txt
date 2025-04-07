@@ -59,7 +59,7 @@ Then we define our project path. Replace the path with your own project path
 .. code-block:: Python
 
 
-    PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions/")
+    PROJECT_PATH=Path("../../../solutions/")
 
 
 
@@ -197,7 +197,7 @@ We then run the analysis with
     /fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/MDAnalysis/analysis/base.py:522: UserWarning: Reader has no dt information, set to 1.0 ps
       self.times[idx] = ts.time
 
-    <MDAnalysis.analysis.rdf.InterRDF object at 0x7fa3c26aac10>
+    <MDAnalysis.analysis.rdf.InterRDF object at 0x7fee45ffb490>
 
 
 
@@ -258,7 +258,7 @@ and save our figure
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.521 seconds)
+   **Total running time of the script:** (0 minutes 7.606 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_rdf.py:

@@ -17,31 +17,31 @@
 
 .. _sphx_glr_auto_examples_plot_gap.py:
 
+.. _use_gap:
 
-Learn forces and energies with GAP
-==================================
+Using GAP on validation data
+======================
 
-In this tutorial you will learn how to learn energies and forces using GAP.
+In this tutorial you will learn to use the trained ml potential on validation data. 
+We do this to evaluate how well GAP has learned the energies and forces
+Let us start by importing some Python modules.
 
-We will need quip and ase
-
-.. GENERATED FROM PYTHON SOURCE LINES 11-24
+.. GENERATED FROM PYTHON SOURCE LINES 12-24
 
 .. code-block:: Python
 
 
     import numpy as np
-    import subprocess
-    from pathlib import Path
-    import ase
-    import ase.io 
     import matplotlib.pyplot as plt
     import matplotlib
-    import os
+    import ase
+    import ase.io 
+    from ase import Atoms
     from quippy.potential import Potential
+    from pathlib import Path
 
-    PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
-    os.chdir(PROJECT_PATH)
+    matplotlib.use("agg")
+
 
 
 
@@ -51,65 +51,14 @@ We will need quip and ase
 
 .. GENERATED FROM PYTHON SOURCE LINES 25-26
 
-Next, we write a little bash script to run the gap_fit program. 
+Then we define our project path. Replace the path with your own project path
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-60
-
-.. code-block:: Python
-
-
-    gap_fit_cmd = """
-    gap_fit e0_method=average \
-            at_file=gap/train_500.xyz \
-    	    gap={distance_2b \
-                    cutoff=6.0 \
-                    covariance_type=ard_se \
-                    delta=1 \
-                    theta_uniform=1.0 \
-                    sparse_method=uniform \
-                    n_sparse=300 \
-                    Z1=18 Z2=18 :\
-                soap \
-                    l_max=6 \
-                    n_max=6 \
-                    atom_sigma=0.5 \
-                    zeta=4 \
-                    cutoff=6.0 \
-                    cutoff_transition_width=0.5 \
-                    covariance_type=dot_product \
-                    n_sparse=300 \
-                    sparse_method=random \
-                    delta=1.0 \
-                    n_Z=1 Z={18}} \
-    	    gp_file=gap/SOAP_500.xml \
-            default_sigma={0.003 0.15 0 0} \
-            sparse_jitter=1.0e-10 \
-            force_parameter_name=forces \
-            energy_parameter_name=energy
-
-    """
-
-    RERUN_GAP = False
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 61-63
-
-Let's walk through the different options...( long long walkthrough )
-We execute our script with 
-
-.. GENERATED FROM PYTHON SOURCE LINES 63-67
+.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
 .. code-block:: Python
 
 
-    if RERUN_GAP:
-        subprocess.run(gap_fit_cmd, cwd=str(PROJECT_PATH))
+    PROJECT_PATH=Path("../../../solutions/")
 
 
 
@@ -118,17 +67,81 @@ We execute our script with
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-69
+.. GENERATED FROM PYTHON SOURCE LINES 30-31
 
-Next, we want to use the generated GAP potential to calculate the energies and forces. 
+Then we load our ML potential. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-194
+.. GENERATED FROM PYTHON SOURCE LINES 31-33
 
 .. code-block:: Python
 
+    ml_potential = Potential(param_filename=str(PROJECT_PATH / "gap/SOAP_500.xml"))
 
 
-    soap = Potential(param_filename=PROJECT_PATH/"gap"/"SOAP_500.xml")
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 34-35
+
+Let us try out the ML potential. First, we create an Atoms object 
+
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
+
+.. code-block:: Python
+
+    distance = 3.3 # angstrom
+    two_argon_atoms = Atoms("Ar2", [[0, 0, 0], [0, 0, distance]])
+    two_argon_atoms.center(vacuum=3)
+    two_argon_atoms.pbc = [1, 1, 1]
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 41-42
+
+Then we set the calculator to ``ml_potential`` and caculate the energy of the system
+
+.. GENERATED FROM PYTHON SOURCE LINES 42-46
+
+.. code-block:: Python
+
+    two_argon_atoms.set_calculator(ml_potential)
+    E = two_argon_atoms.get_potential_energy()
+    print(E)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:42: FutureWarning: Please use atoms.calc = calc
+      two_argon_atoms.set_calculator(ml_potential)
+    -1146.9901101622613
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 47-48
+
+To evaluate the ML potential, we will compare predicted energies (and forces) with DFT energies (and forces). To do so, we will load the coordinates, energies and forces from the DFT simulation. Then we will predict the energy for the coordinates using the ML potential, and compare with the reference energies from the DFT simulation.
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-51
+
+To quantify the error, we calculate the root mean square (RMS) error between the reference data and the predicted data. 
+
+.. GENERATED FROM PYTHON SOURCE LINES 51-68
+
+.. code-block:: Python
 
     def rms_dict(x_ref, x_pred):
         """ Takes two datasets of the same shape and returns a dictionary containing RMS error data"""
@@ -147,6 +160,21 @@ Next, we want to use the generated GAP potential to calculate the energies and f
 
         return {'rmse': average, 'std': std_}
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 69-70
+
+Next, we have a function to plot the predicted energy against the reference energy.
+
+.. GENERATED FROM PYTHON SOURCE LINES 70-108
+
+.. code-block:: Python
+
     def energy_plot(in_file, ax, title='Plot of energy'):
         """ Plots the distribution of energy per atom on the output vs the input"""
         # read files
@@ -156,14 +184,15 @@ Next, we want to use the generated GAP potential to calculate the energies and f
         print(f"number of frames {len(in_frames)}")
         print(f"position array has shape {in_frames[0].positions.shape}")
         print(f"{len(in_frames[0].get_chemical_symbols())}")
-        # list energies
+        # get reference potential energies calculated by DFT
         ener_in = [frame.get_potential_energy() / len(frame.get_chemical_symbols()) for frame in in_frames]
         ener_out = []
+        # predict the energies using GAP.
+        # set our ase calculator to ml_potential and then calculate the energy using that calculator. 
         for frame in  in_frames:
-            frame.set_calculator(soap)
+            frame.set_calculator(ml_potential)
             ener_out+=[frame.get_potential_energy() / len(frame.get_chemical_symbols())]
-        #ener_out = [frame.get_potential_energy() / len(frame.get_chemical_symbols()) for frame in out_frames]
-        # scatter plot of the data
+        # make a scatter plot of the data
         ax.scatter(ener_in, ener_out)
         # get the appropriate limits for the plot
         for_limits = np.array(ener_in +ener_out)
@@ -184,8 +213,23 @@ Next, we want to use the generated GAP potential to calculate the energies and f
         ax.text(0.9, 0.1, rmse_text, transform=ax.transAxes, fontsize='small', horizontalalignment='right',
                 verticalalignment='bottom')
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 109-110
+
+Then, we have a function to plot the predicted force against the reference force.
+
+.. GENERATED FROM PYTHON SOURCE LINES 110-152
+
+.. code-block:: Python
+
     def force_plot(in_file, ax, symbol='HO', title='Plot of force'):
-        """ Plots the distribution of firce components per atom on the output vs the input
+        """ Plots the distribution of force components per atom on the output vs the input
             only plots for the given atom type(s)"""
 
         in_atoms = ase.io.read(in_file, ':')
@@ -200,7 +244,7 @@ Next, we want to use the generated GAP potential to calculate the energies and f
             for j, sym in enumerate(sym_all):
                 if sym in symbol:
                     in_force.append(at_in.get_forces()[j]) 
-            at_in.set_calculator(soap)
+            at_in.set_calculator(ml_potential)
             for j, sym in enumerate(sym_all):
                 if sym in symbol:
                     out_force.append(at_in.get_forces()[j]) 
@@ -214,13 +258,6 @@ Next, we want to use the generated GAP potential to calculate the energies and f
         print(in_force.shape)
         # scatter plot of the data
         ax.scatter(in_force, out_force)
-        # get the appropriate limits for the plot
-        #for_limits = np.array(in_force + out_force)
-        #flim = (for_limits.min() - 1, for_limits.max() + 1)
-        #ax.set_xlim(flim)
-        #ax.set_ylim(flim)
-        # add line of
-        #ax.plot(flim, flim, c='k')
         # set labels
         ax.set_ylabel('force by GAP / (eV/Å)')
         ax.set_xlabel('force by CP2K / (eV/Å)')
@@ -233,41 +270,70 @@ Next, we want to use the generated GAP potential to calculate the energies and f
         ax.text(0.9, 0.1, rmse_text, transform=ax.transAxes, fontsize='small', horizontalalignment='right',
                 verticalalignment='bottom')
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 153-154
+
+Finally, we plot the error and force correlation plots for the training data.
+
+.. GENERATED FROM PYTHON SOURCE LINES 154-165
+
+.. code-block:: Python
+
+
     fig, ax = plt.subplots(1, 1)
-    energy_plot("gap/test.xyz", ax, "Energy on training data")
+    energy_plot(PROJECT_PATH / "gap/train.xyz", ax, "Energy on training data")
     fig.savefig("plots/energy_plot_500.png")
 
 
     fig, ax = plt.subplots(1, 1)
-    force_plot("gap/test.xyz", ax, "Force on training data")
+    force_plot(PROJECT_PATH / "gap/train.xyz", ax, "Force on training data")
     fig.savefig("plots/force_plot_500.png")
 
-    fig, ax = plt.subplots(1, 1)
-    energy_plot("gap/validate.xyz", ax, "Energy on validation data")
-    fig.savefig("plots/energy_plot_validate_500.png")
 
 
-    fig, ax = plt.subplots(1, 1)
-    force_plot("gap/validate.xyz", ax, "Force on validation data")
-    fig.savefig("plots/force_plot_validate_500.png")
 
+
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_gap_001.png
+         :alt: Energy on training data
+         :srcset: /auto_examples/images/sphx_glr_plot_gap_001.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/images/sphx_glr_plot_gap_002.png
+         :alt: Plot of force
+         :srcset: /auto_examples/images/sphx_glr_plot_gap_002.png
+         :class: sphx-glr-multi-img
 
 
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py", line 71, in <module>
-        soap = Potential(param_filename=PROJECT_PATH/"gap"/"SOAP_500.xml")
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File "/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential.py", line 92, in __init__
-        self._quip_potential = quippy.potential_module.Potential(args_str=args_str, param_str=param_str)
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File "/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/quippy/potential_module.py", line 241, in __init__
-        result = quippy._quippy.f90wrap_potential_initialise(args_str=args_str, pot1=(None if pot1 is None else pot1._handle), \
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    RuntimeError
+    Atoms(symbols='Ar108', pbc=True, cell=[17.0742, 17.0742, 17.0742], calculator=SinglePointCalculator(...))
+    number of frames 500
+    position array has shape (108, 3)
+    108
+    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:85: FutureWarning: Please use atoms.calc = calc
+      frame.set_calculator(ml_potential)
+    7.878274713952334e-06
+    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:126: FutureWarning: Please use atoms.calc = calc
+      at_in.set_calculator(ml_potential)
+    54000
+    (3,)
+    (54000,)
+    0.0014386871446798366
 
 
 
@@ -275,7 +341,7 @@ Next, we want to use the generated GAP potential to calculate the energies and f
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.241 seconds)
+   **Total running time of the script:** (1 minutes 4.277 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_gap.py:

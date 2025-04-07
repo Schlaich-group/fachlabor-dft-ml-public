@@ -1,4 +1,4 @@
-.. _liquid_argon_cp2k
+.. _liquid_argon_in_cp2k:
 
 Liquid argon with CP2K 
 *********************************
@@ -105,7 +105,6 @@ Force Calculation with DFT
 
             # Multi-grid information
             &MGRID
-                # Optimize this parameter
                 CUTOFF 600
                 NGRIDS 5
             &END MGRID
@@ -114,7 +113,7 @@ Force Calculation with DFT
                 SCF_GUESS RESTART
                 MAX_SCF 30
                 EPS_SCF 1.0E-6
-                # Orbital transformation (wave-function minimization) scheme
+                # Orbital transformation scheme
                 &OT
                     MINIMIZER DIIS
                     PRECONDITIONER FULL_SINGLE_INVERSE

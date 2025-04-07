@@ -11,8 +11,9 @@ Machine Learning of Atomic Interactions Tutorials
     :maxdepth: 2
     :caption: Contents:
     
-    dft/liquid_argon_in_cp2k
+    dft/index
+    ml/index
+    md/index
     auto_examples/index
-    ml/ml_atomic_interactions
 
 Note: The tutorials are still a work in progress and incomplete.

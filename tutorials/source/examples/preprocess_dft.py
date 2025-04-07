@@ -5,8 +5,8 @@
 Preprocessing DFT Data
 ======================
 
-In this tutorial we will preprocess our DFT data. CP2K generates data with units in ...
-but GAP takes data in units of ...
+In this tutorial we will preprocess our DFT data. CP2K generates data with units in `Hartree` and `Hartree/Bohr`
+but GAP takes data in units of `eV` and `eV/Å`.
 Furthermore, GAP uses slightly different labelling from CP2K. That's why we need to preprocess
 
 We start with importing our python modules. We use tqdm to show a nice progress bar and pint to do unit conversions
@@ -16,8 +16,8 @@ import pint
 ureg = pint.UnitRegistry()
 
 # %%
-# We set our project path as
-PROJECT_PATH = Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions")
+# Then we set our project path. Replace this with your own project path
+PROJECT_PATH = Path("../../../solutions")
 
 # %%
 # Now, we define our conversion constants
@@ -157,7 +157,7 @@ def _xyz_to_extxyz(
 # We now call the converter on our DFT files
 
 _xyz_to_extxyz(
-    outfile=PROJECT_PATH / "gap/train2",
+    outfile=PROJECT_PATH / "gap/trajectory",
     positions=PROJECT_PATH / "dft/Argon_Simulation-pos-1.xyz",
     forces=PROJECT_PATH / "dft/Argon_Simulation-frc-1.xyz",
     lattice=[[17.0742, 0, 0],
@@ -165,4 +165,4 @@ _xyz_to_extxyz(
              [0, 0, 17.0742]])
 
 # %%
-# The converted file can be found in ``gap/train2.xyz``
+# The converted file can be found in ``gap/train.xyz``

@@ -25,7 +25,7 @@ from MDAnalysis.analysis.rdf import InterRDF
 # %%
 # Then we define our project path. Replace the path with your own project path
 
-PROJECT_PATH=Path("/work/amam/ckf7015/fachlabor-dft-ml/solutions/")
+PROJECT_PATH=Path("../../../solutions/")
 
 # %%
 # Next, we load our simulation output.

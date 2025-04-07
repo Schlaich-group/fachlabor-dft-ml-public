@@ -10,10 +10,14 @@ import sys
 sys.path.append(".")
 import cp2klexer
 from sphinx.highlighting import lexers
+from pygments_lammps import LAMMPSLexer
+
+def setup(app):
+    app.add_lexer("lammps", LAMMPSLexer)
 
 project = 'Machine Learning of Atomic Interactions'
 copyright = '2025, IPFM'
-author = 'Kira Fischer and Alexander Schlaich, IPFM'
+author = 'Kira Fischer, Richard Schömig and Alexander Schlaich, IPFM'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -24,10 +28,11 @@ extensions = [
 sphinx_gallery_conf = {
      'examples_dirs': 'examples',   # path to your example scripts
      'gallery_dirs': 'auto_examples',  # path to where to save gallery generated output
+     'example_extensions': {'.py', '.in', '.sh'}
 }
 
 templates_path = ['_templates']
-exclude_patterns = []
+exclude_patterns = ["examples/GALLERY_HEADER.rst"]
 
 
 

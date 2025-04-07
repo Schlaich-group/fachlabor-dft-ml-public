@@ -31,7 +31,75 @@ Examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial we will preprocess our DFT data. CP2K generates data with units in ... but GAP takes data in units of ... Furthermore, GAP uses slightly different labelling from CP2K. That&#x27;s why we need to preprocess">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data.  GAP is implemented as a command line tool gap_fit which takes many parameters.  The parameters are specified in the following, and then passed to gap_fit ">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_gap_fit_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_gap_fit.sh`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fitting GAP</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is a description  ">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_Ar.in_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_Ar.in.sh`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Simulation of Argon</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial you will learn how to calculate the 2 body potential between two Argon atoms with DFT.  We will use ASE (Atomic Simulation Environment) to setup our simulation.  To do our energy calculation, ASE will call CP2K, which implements DFT.">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_2body_potential_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_2body_potential.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculating the 2 body potential of Argon using ASE and CP2K</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial you will learn to use the trained ml potential on validation data.  We do this to evaluate how well GAP has learned the energies and forces Let us start by importing some Python modules.">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_plot_gap_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_plot_gap.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Using GAP on validation data</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial we will preprocess our DFT data. CP2K generates data with units in Hartree and Hartree/Bohr but GAP takes data in units of eV and eV/Å. Furthermore, GAP uses slightly different labelling from CP2K. That&#x27;s why we need to preprocess">
 
 .. only:: html
 
@@ -57,6 +125,10 @@ Examples
    :hidden:
 
    /auto_examples/plot_rdf
+   /auto_examples/gap_fit
+   /auto_examples/Ar.in
+   /auto_examples/2body_potential
+   /auto_examples/plot_gap
    /auto_examples/preprocess_dft
 
 
@@ -66,7 +138,7 @@ Examples
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
-      :download:`Download all examples in Python source code: auto_examples_python.zip </auto_examples/auto_examples_python.zip>`
+      :download:`Download all examples as source code: auto_examples.zip </auto_examples/auto_examples.zip>`
 
     .. container:: sphx-glr-download sphx-glr-download-jupyter
 

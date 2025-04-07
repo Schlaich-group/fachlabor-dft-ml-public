@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Calculating the radial distribution function" href="plot_rdf.html" /><link rel="prev" title="Liquid argon with CP2K" href="../dft/liquid_argon_in_cp2k.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Simulation of Argon" href="Ar.in.html" /><link rel="prev" title="Calculating the radial distribution function" href="plot_rdf.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Examples - Machine Learning of Atomic Interactions documentation</title>
@@ -204,13 +204,34 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gap.html">Using GAP on validation data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
 </ul>
 
 </div>
@@ -256,14 +277,26 @@
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this tutorial we will learn how to analyse (ab-initio) molecular dynamics trajectories. We will use the tool MDAnalysis to read our simulation data files and calculate the radial distribution  function."><img alt="" src="../_images/sphx_glr_plot_rdf_thumb.png" />
 <p><a class="reference internal" href="plot_rdf.html#sphx-glr-auto-examples-plot-rdf-py"><span class="std std-ref">Calculating the radial distribution function</span></a></p>
   <div class="sphx-glr-thumbnail-title">Calculating the radial distribution function</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this tutorial we will preprocess our DFT data. CP2K generates data with units in ... but GAP takes data in units of ... Furthermore, GAP uses slightly different labelling from CP2K. That&#x27;s why we need to preprocess"><img alt="" src="../_images/sphx_glr_preprocess_dft_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data.  GAP is implemented as a command line tool gap_fit which takes many parameters.  The parameters are specified in the following, and then passed to gap_fit "><img alt="" src="../_images/sphx_glr_gap_fit_thumb.png" />
+<p><a class="reference internal" href="gap_fit.html#sphx-glr-auto-examples-gap-fit-sh"><span class="std std-ref">Fitting GAP</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fitting GAP</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is a description  "><img alt="" src="../_images/sphx_glr_Ar.in_thumb.png" />
+<p><a class="reference internal" href="Ar.in.html#sphx-glr-auto-examples-ar-in-sh"><span class="std std-ref">Simulation of Argon</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Simulation of Argon</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this tutorial you will learn how to calculate the 2 body potential between two Argon atoms with DFT.  We will use ASE (Atomic Simulation Environment) to setup our simulation.  To do our energy calculation, ASE will call CP2K, which implements DFT."><img alt="" src="../_images/sphx_glr_2body_potential_thumb.png" />
+<p><a class="reference internal" href="2body_potential.html#sphx-glr-auto-examples-2body-potential-py"><span class="std std-ref">Calculating the 2 body potential of Argon using ASE and CP2K</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Calculating the 2 body potential of Argon using ASE and CP2K</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this tutorial you will learn to use the trained ml potential on validation data.  We do this to evaluate how well GAP has learned the energies and forces Let us start by importing some Python modules."><img alt="" src="../_images/sphx_glr_plot_gap_thumb.png" />
+<p><a class="reference internal" href="plot_gap.html#sphx-glr-auto-examples-plot-gap-py"><span class="std std-ref">Using GAP on validation data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Using GAP on validation data</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this tutorial we will preprocess our DFT data. CP2K generates data with units in Hartree and Hartree/Bohr but GAP takes data in units of eV and eV/Å. Furthermore, GAP uses slightly different labelling from CP2K. That&#x27;s why we need to preprocess"><img alt="" src="../_images/sphx_glr_preprocess_dft_thumb.png" />
 <p><a class="reference internal" href="preprocess_dft.html#sphx-glr-auto-examples-preprocess-dft-py"><span class="std std-ref">Preprocessing DFT Data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Preprocessing DFT Data</div>
 </div></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/07fcc19ba03226cd3d83d4e40ec44385/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/9292b06e235011238fffc1074968aa79/auto_examples.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">as</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples.zip</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/6f1e7a639e0699d6164445b55e6c116d/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
@@ -277,23 +310,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="plot_rdf.html">
+          <a class="next-page" href="Ar.in.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Calculating the radial distribution function</div>
+                <div class="title">Simulation of Argon</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../dft/liquid_argon_in_cp2k.html">
+          <a class="prev-page" href="plot_rdf.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Liquid argon with CP2K</div>
+                <div class="title">Calculating the radial distribution function</div>
                 
               </div>
             </a>

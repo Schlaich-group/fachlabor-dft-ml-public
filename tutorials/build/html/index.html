@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Liquid argon with CP2K" href="dft/liquid_argon_in_cp2k.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Day 1: Quantum mechanical calculations with DFT" href="dft/index.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Machine Learning of Atomic Interactions documentation</title>
@@ -204,13 +204,34 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="auto_examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="auto_examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_gap.html">Using GAP on validation data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
 </ul>
 
 </div>
@@ -256,21 +277,26 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html#getting-started">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html#force-calculation-with-dft">Force Calculation with DFT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html#molecular-dynamics">Molecular dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html#running-your-simulation">Running your simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ml/ml_atomic_interactions.html#setting-up-our-work-environment">Setting up our work environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml/ml_atomic_interactions.html#preprocessing-dft-data">Preprocessing DFT data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml/ml_atomic_interactions.html#fitting-a-potential-with-gap">Fitting a potential with GAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml/ml_atomic_interactions.html#evaluating-the-fit">Evaluating the fit</a></li>
-</ul>
-</li>
 </ul>
 </div>
 <p>Note: The tutorials are still a work in progress and incomplete.</p>
@@ -281,12 +307,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="dft/liquid_argon_in_cp2k.html">
+          <a class="next-page" href="dft/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Liquid argon with CP2K</div>
+                <div class="title">Day 1: Quantum mechanical calculations with DFT</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

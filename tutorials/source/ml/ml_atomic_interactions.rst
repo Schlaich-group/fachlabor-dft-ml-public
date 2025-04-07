@@ -1,9 +1,9 @@
-Machine learning atomic interactions with GAP
-*********************************************
+Getting started
+***************
 
 .. container:: abstract
 
-    In the following we will use GAP (Gaussian Approximation Potential) implemented in QUIP (QUantum mechanics and Interatomic Potentials)
+    In the following we will use GAP (Gaussian Approximation Potential) implemented in QUIP (**Q**\uantum Mechanics and **I**\nteratomic **P**\otentials)
     to learn the energies and forces of liquid argon. 
 
 
@@ -30,7 +30,7 @@ Setting up our work environment
     
 .. container:: justify
 
-    In the following we will work with a Jupyter notebook. To do so, go into your folder `gap` and type 
+    In the following we will work with a Jupyter notebook. To do so, go into your folder ``gap`` and type 
 
 .. code-block:: bash
     :dedent: 0
@@ -40,33 +40,7 @@ Setting up our work environment
 .. container:: justify
     
     Now, the jupyter notebook editor opens in your browser. This is where we will work. 
-    Continue now with preprocessing DFT data. :ref:`preprocess_dft`
+    Continue now with :ref:`preprocess_dft`.
 
-
-    
-Preprocessing DFT data
-======================
-
-.. container:: justify
-
-    First, we need to convert our simulation data to be
-
-Fitting a potential with GAP
-============================
-
-.. container:: justify
-
-    Once we have generated train, test and validation data sets, we can start training our model
-    To do so, we first import quip and ase as
-
-.. code-block::
-   :dedent: 0
-
-   import quip
-   import ase
-
-
-Evaluating the fit
-==================
 
 

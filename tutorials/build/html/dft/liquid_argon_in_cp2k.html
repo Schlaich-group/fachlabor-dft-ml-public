@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Examples" href="../auto_examples/index.html" /><link rel="prev" title="Machine Learning of Atomic Interactions Tutorials" href="../index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Day 2: Machine learning atomic interactions with GAP" href="../ml/index.html" /><link rel="prev" title="Calculating the 2 body potential of Argon using ASE and CP2K" href="../auto_examples/2body_potential.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Liquid argon with CP2K - Machine Learning of Atomic Interactions documentation</title>
@@ -204,13 +204,34 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../auto_examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Day 1: Quantum mechanical calculations with DFT</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../auto_examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_gap.html">Using GAP on validation data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/preprocess_dft.html">Preprocessing DFT Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
 </ul>
 
 </div>
@@ -252,7 +273,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="liquid-argon-with-cp2k">
-<h1>Liquid argon with CP2K<a class="headerlink" href="#liquid-argon-with-cp2k" title="Link to this heading">¶</a></h1>
+<span id="liquid-argon-in-cp2k"></span><h1>Liquid argon with CP2K<a class="headerlink" href="#liquid-argon-with-cp2k" title="Link to this heading">¶</a></h1>
 <div class="abstract docutils container">
 <p>In this tutorial, we learn how to simulate liquid argon with CP2K and using Born-Oppenheimer ab-initio MD.</p>
 </div>
@@ -330,7 +351,6 @@ Start with the following two lines</p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="c"># Multi-grid information</span>
         <span class="nb">&amp;MGRID</span>
-            <span class="c"># Optimize this parameter</span>
             CUTOFF 600
             NGRIDS 5
         <span class="nb">&amp;END</span> MGRID
@@ -339,7 +359,7 @@ Start with the following two lines</p>
             SCF_GUESS RESTART
             MAX_SCF 30
             EPS_SCF 1.0E-6
-            <span class="c"># Orbital transformation (wave-function minimization) scheme</span>
+            <span class="c"># Orbital transformation scheme</span>
             <span class="nb">&amp;OT</span>
                 MINIMIZER DIIS
                 PRECONDITIONER FULL_SINGLE_INVERSE
@@ -545,23 +565,23 @@ Take a look into the file. The first line in the xyz format specifies the number
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../auto_examples/index.html">
+          <a class="next-page" href="../ml/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Examples</div>
+                <div class="title">Day 2: Machine learning atomic interactions with GAP</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../index.html">
+          <a class="prev-page" href="../auto_examples/2body_potential.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Calculating the 2 body potential of Argon using ASE and CP2K</div>
                 
               </div>
             </a>

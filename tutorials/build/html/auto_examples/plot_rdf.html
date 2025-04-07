@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Preprocessing DFT Data" href="preprocess_dft.html" /><link rel="prev" title="Examples" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Examples" href="index.html" /><link rel="prev" title="Molecular Dynamics with LAMMPS interfaced to QUIP" href="../md/running_md_with_lammps.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Calculating the radial distribution function - Machine Learning of Atomic Interactions documentation</title>
@@ -204,13 +204,34 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gap.html">Using GAP on validation data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocess_dft.html">Preprocessing DFT Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
 </ul>
 
 </div>
@@ -273,7 +294,7 @@ function.</p>
 </pre></div>
 </div>
 <p>Then we define our project path. Replace the path with your own project path</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/work/amam/ckf7015/fachlabor-dft-ml/solutions/&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;../../../solutions/&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Next, we load our simulation output.</p>
@@ -314,7 +335,7 @@ function.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/fibus/fs3/0b/ckf7015/.local/lib/python3.11/site-packages/MDAnalysis/analysis/base.py:522: UserWarning: Reader has no dt information, set to 1.0 ps
   self.times[idx] = ts.time
 
-&lt;MDAnalysis.analysis.rdf.InterRDF object at 0x7fa3c26aac10&gt;
+&lt;MDAnalysis.analysis.rdf.InterRDF object at 0x7fee45ffb490&gt;
 </pre></div>
 </div>
 <p>Next, we plot our results</p>
@@ -330,7 +351,7 @@ function.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;lammps&quot;</span> <span class="o">/</span> <span class="s2">&quot;rdf.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_rdf_002.png" srcset="../_images/sphx_glr_plot_rdf_002.png" alt="plot rdf" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.521 seconds)</p>
+<img src="../_images/sphx_glr_plot_rdf_002.png" srcset="../_images/sphx_glr_plot_rdf_002.png" alt="plot rdf" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.606 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-rdf-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/4fa528a05673abb5e2b194aad2d3e9fe/plot_rdf.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rdf.ipynb</span></code></a></p>
@@ -350,23 +371,23 @@ function.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="preprocess_dft.html">
+          <a class="next-page" href="index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Preprocessing DFT Data</div>
+                <div class="title">Examples</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="../md/running_md_with_lammps.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Examples</div>
+                <div class="title">Molecular Dynamics with LAMMPS interfaced to QUIP</div>
                 
               </div>
             </a>

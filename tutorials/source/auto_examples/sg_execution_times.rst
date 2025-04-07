@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:05.521** total execution time for 2 files **from auto_examples**:
+**01:04.277** total execution time for 6 files **from auto_examples**:
 
 .. container::
 
@@ -32,8 +32,20 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_plot_gap.py` (``plot_gap.py``)
+     - 01:04.277
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_2body_potential.py` (``2body_potential.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_Ar.in.sh` (``Ar.in.sh``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_gap_fit.sh` (``gap_fit.sh``)
+     - 00:00.000
+     - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_rdf.py` (``plot_rdf.py``)
-     - 00:05.521
+     - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_auto_examples_preprocess_dft.py` (``preprocess_dft.py``)
      - 00:00.000

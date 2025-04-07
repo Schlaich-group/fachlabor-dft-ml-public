@@ -1,0 +1,117 @@
+{
+ "Path": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  }
+ ],
+ "Potential": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "quippy.potential",
+   "module_short": "quippy.potential",
+   "name": "Potential"
+  }
+ ],
+ "ase.io.read": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "ase.io",
+   "module_short": "ase.io",
+   "name": "read"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "ase.io",
+   "module_short": "ase.io",
+   "name": "read"
+  }
+ ],
+ "matplotlib.use": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib",
+   "module_short": "matplotlib",
+   "name": "use"
+  }
+ ],
+ "np.array": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "array"
+  }
+ ],
+ "np.average": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "average"
+  }
+ ],
+ "np.round": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "round"
+  }
+ ],
+ "np.shape": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "shape"
+  }
+ ],
+ "np.sqrt": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "sqrt"
+  }
+ ],
+ "np.sum": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "sum"
+  }
+ ],
+ "np.var": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "var"
+  }
+ ],
+ "plt.subplots": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "subplots"
+  }
+ ]
+}

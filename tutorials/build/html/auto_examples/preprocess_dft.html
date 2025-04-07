@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Machine learning atomic interactions with GAP" href="../ml/ml_atomic_interactions.html" /><link rel="prev" title="Calculating the radial distribution function" href="plot_rdf.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Splitting the trajectory" href="../ml/split_trajectory.html" /><link rel="prev" title="Getting started" href="../ml/ml_atomic_interactions.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Preprocessing DFT Data - Machine Learning of Atomic Interactions documentation</title>
@@ -204,13 +204,34 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dft/index.html">Day 1: Quantum mechanical calculations with DFT</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Day 1: Quantum mechanical calculations with DFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dft/work_environment.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dft/liquid_argon_in_cp2k.html">Liquid argon with CP2K</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../ml/index.html">Day 2: Machine learning atomic interactions with GAP</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Day 2: Machine learning atomic interactions with GAP</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Getting started</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocessing DFT Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/split_trajectory.html">Splitting the trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gap.html">Using GAP on validation data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../md/index.html">Day 3: Molecular dynamics simulations with ML potentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Day 3: Molecular dynamics simulations with ML potentials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../md/running_md_with_lammps.html">Molecular Dynamics with LAMMPS interfaced to QUIP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_rdf.html">Calculating the radial distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_fit.html">Fitting GAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ar.in.html">Simulation of Argon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2body_potential.html">Calculating the 2 body potential of Argon using ASE and CP2K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gap.html">Using GAP on validation data</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Preprocessing DFT Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/ml_atomic_interactions.html">Machine learning atomic interactions with GAP</a></li>
 </ul>
 
 </div>
@@ -258,8 +279,8 @@ to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="preprocessing-dft-data">
 <span id="preprocess-dft"></span><span id="sphx-glr-auto-examples-preprocess-dft-py"></span><h1>Preprocessing DFT Data<a class="headerlink" href="#preprocessing-dft-data" title="Link to this heading">¶</a></h1>
-<p>In this tutorial we will preprocess our DFT data. CP2K generates data with units in …
-but GAP takes data in units of …
+<p>In this tutorial we will preprocess our DFT data. CP2K generates data with units in <cite>Hartree</cite> and <cite>Hartree/Bohr</cite>
+but GAP takes data in units of <cite>eV</cite> and <cite>eV/Å</cite>.
 Furthermore, GAP uses slightly different labelling from CP2K. That’s why we need to preprocess</p>
 <p>We start with importing our python modules. We use tqdm to show a nice progress bar and pint to do unit conversions</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
@@ -267,8 +288,8 @@ Furthermore, GAP uses slightly different labelling from CP2K. That’s why we ne
 <span class="n">ureg</span> <span class="o">=</span> <span class="n">pint</span><span class="o">.</span><span class="n">UnitRegistry</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>We set our project path as</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/work/amam/ckf7015/fachlabor-dft-ml/solutions&quot;</span><span class="p">)</span>
+<p>Then we set our project path. Replace this with your own project path</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;../../../solutions&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now, we define our conversion constants</p>
@@ -406,7 +427,7 @@ Furthermore, GAP uses slightly different labelling from CP2K. That’s why we ne
 </div>
 <p>We now call the converter on our DFT files</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">_xyz_to_extxyz</span><span class="p">(</span>
-    <span class="n">outfile</span><span class="o">=</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/train2&quot;</span><span class="p">,</span>
+    <span class="n">outfile</span><span class="o">=</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/trajectory&quot;</span><span class="p">,</span>
     <span class="n">positions</span><span class="o">=</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;dft/Argon_Simulation-pos-1.xyz&quot;</span><span class="p">,</span>
     <span class="n">forces</span><span class="o">=</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;dft/Argon_Simulation-frc-1.xyz&quot;</span><span class="p">,</span>
     <span class="n">lattice</span><span class="o">=</span><span class="p">[[</span><span class="mf">17.0742</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -414,7 +435,7 @@ Furthermore, GAP uses slightly different labelling from CP2K. That’s why we ne
              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">17.0742</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>The converted file can be found in <code class="docutils literal notranslate"><span class="pre">gap/train2.xyz</span></code></p>
+<p>The converted file can be found in <code class="docutils literal notranslate"><span class="pre">gap/train.xyz</span></code></p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-preprocess-dft-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/13c09da8b963bc2a172ce07b373d7139/preprocess_dft.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">preprocess_dft.ipynb</span></code></a></p>
@@ -434,23 +455,23 @@ Furthermore, GAP uses slightly different labelling from CP2K. That’s why we ne
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../ml/ml_atomic_interactions.html">
+          <a class="next-page" href="../ml/split_trajectory.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Machine learning atomic interactions with GAP</div>
+                <div class="title">Splitting the trajectory</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="plot_rdf.html">
+          <a class="prev-page" href="../ml/ml_atomic_interactions.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Calculating the radial distribution function</div>
+                <div class="title">Getting started</div>
                 
               </div>
             </a>
