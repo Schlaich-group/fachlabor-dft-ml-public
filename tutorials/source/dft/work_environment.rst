@@ -19,7 +19,7 @@ Setting up our work environment
     |   your-project
     |   |---dft
     |   |   |---2_body_potential
-    |   |   |---liquid_argon
+    |   |   |---liquid_argon_85K
     
 .. container:: justify
 

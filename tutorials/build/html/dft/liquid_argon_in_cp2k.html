@@ -283,8 +283,8 @@
 <p>To run a simulation in CP2K, one needs to provide CP2K with an input script.</p>
 </div>
 <div class="justify docutils container">
-<p>Create a folder, call it <em>dft_liquid_argon_85/</em>, and then create a blank text file in it
-called <em>Argon_Simulation.inp</em>. Copy the following lines in the <em>Argon_Simulation.inp</em>, where a line starting with
+<p>Got into your folder <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>, and then create a blank text file in it
+called <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>. Copy the following lines in the <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>, where a line starting with
 a hash symbol (#) is a comment ignored by CP2K:</p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span> <span class="c"># Name of the project</span>
@@ -326,13 +326,7 @@ Start with the following two lines</p>
 </pre></div>
 </div>
 <div class="justify docutils container">
-<p>Then, we will specify some general DFT settings. First, we set the system charge to 0</p>
-</div>
-<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        CHARGE 0
-</pre></div>
-</div>
-<div class="justify docutils container">
-<p>Next, we need to specify a basis set and a potential. First, copy the files in <em>resources/dft/BASIS_MOLOPT</em> and <em>GTH_POTENTIALS</em> to your directory <em>dft/liquid_argon_85</em>. Then we import our files by specifying the following in <em>Argon_Simulation.inp</em></p>
+<p>Next, we need to specify a basis set and a potential. First, copy the files in <code class="docutils literal notranslate"><span class="pre">resources/dft/BASIS_MOLOPT</span></code> and <code class="docutils literal notranslate"><span class="pre">GTH_POTENTIALS</span></code> to your directory <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>. Then we import our files by specifying the following in <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code></p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        BASIS_SET_FILE_NAME BASIS_MOLOPT
         POTENTIAL_FILE_NAME GTH_POTENTIALS
@@ -344,7 +338,7 @@ Start with the following two lines</p>
 </div>
 <div class="info admonition">
 <p class="admonition-title">About pseudopotentials</p>
-<p>The pseudopotential is used as an approximation for the simplified description of the nucleus-valence electron and core electron-valence electron interaction.</p>
+<p>The pseudopotential is used as an approximation of the nucleus-valence electron and core electron-valence electron interaction.</p>
 </div>
 <div class="justify docutils container">
 <p>Next, we have a whole bunch of parameters for our calculation</p>
@@ -412,9 +406,9 @@ Start your system section with</p>
 </div>
 <div class="justify docutils container">
 <p>Then we add our topology information, like coordinates and system size.</p>
-<p>First, we need to provide CP2K with a starting configuration. Todo so copy <em>resources/argon.xyz</em> to your directory <em>dft_liquid_argon_85</em>.
-Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize <em>argon.xyz</em> with <em>vmd</em>. This is our starting configuration.</p>
-<p>We now tell CP2K to use this file using</p>
+<p>First, we need to provide CP2K with a starting configuration. Todo so copy <code class="docutils literal notranslate"><span class="pre">resources/argon.xyz</span></code> to your directory <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>.
+Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize <code class="docutils literal notranslate"><span class="pre">argon.xyz</span></code> with <em>vmd</em>. This is our starting configuration.</p>
+<p>We now tell CP2K to use this file</p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="nb">&amp;TOPOLOGY</span>
             <span class="c"># Starting configuration.</span>
@@ -544,18 +538,20 @@ Take a look into the file. The first line in the xyz format specifies the number
 <section id="running-your-simulation">
 <h2>Running your simulation<a class="headerlink" href="#running-your-simulation" title="Link to this heading">¶</a></h2>
 <div class="justify docutils container">
-<p>You’ve made it! Your input file <em>Argon_Simulation.inp</em> is now complete!</p>
+<p>You’ve made it! Your input file <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code> is now complete!</p>
 <p>You can run the simulation using</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp2k.sopt<span class="w"> </span>-i<span class="w"> </span>Argon_Simulation.inp
 </pre></div>
 </div>
 <div class="justify docutils container">
-<p>Here <em>-i</em> specifies the input file. You will get 4 files
-- <cite>Argon_Simulation-pos.xyz</cite> with the atomic coordinates
-- <cite>Argon_Simulation-frc.xyz</cite> with the force on each atom
-- <cite>Argon_Simulation-vel.xyz</cite> with the velocity on each atom
-- <cite>Argon_Simulation-n.restart</cite> which is a restart file for the simulation</p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">-i</span></code> specifies the input file. You will get 4 files</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Argon_Simulation-pos.xyz</span></code> with the atomic coordinates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Argon_Simulation-frc.xyz</span></code> with the force on each atom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Argon_Simulation-vel.xyz</span></code> with the velocity on each atom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Argon_Simulation-n.restart</span></code> which is a restart file for the simulation</p></li>
+</ul>
 </div>
 </section>
 </section>

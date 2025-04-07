@@ -17,8 +17,8 @@ Getting started
 
 .. container:: justify
 
-    Create a folder, call it *dft_liquid_argon_85/*, and then create a blank text file in it
-    called *Argon_Simulation.inp*. Copy the following lines in the *Argon_Simulation.inp*, where a line starting with 
+    Got into your folder ``dft/liquid_argon_85K``, and then create a blank text file in it
+    called ``Argon_Simulation.inp``. Copy the following lines in the ``Argon_Simulation.inp``, where a line starting with 
     a hash symbol (#) is a comment ignored by CP2K:
 
 .. code-block:: cp2k
@@ -68,16 +68,7 @@ Force Calculation with DFT
 
 .. container:: justify
 
-    Then, we will specify some general DFT settings. First, we set the system charge to 0
-
-.. code-block:: cp2k
-    :dedent: 0
-
-            CHARGE 0
-
-.. container:: justify
-
-    Next, we need to specify a basis set and a potential. First, copy the files in *resources/dft/BASIS_MOLOPT* and *GTH_POTENTIALS* to your directory *dft/liquid_argon_85*. Then we import our files by specifying the following in *Argon_Simulation.inp*
+    Next, we need to specify a basis set and a potential. First, copy the files in ``resources/dft/BASIS_MOLOPT`` and ``GTH_POTENTIALS`` to your directory ``dft/liquid_argon_85K``. Then we import our files by specifying the following in ``Argon_Simulation.inp``
 
 .. code-block:: cp2k
     :dedent: 0
@@ -93,7 +84,7 @@ Force Calculation with DFT
 .. admonition:: About pseudopotentials
     :class: info 
 
-    The pseudopotential is used as an approximation for the simplified description of the nucleus-valence electron and core electron-valence electron interaction.
+    The pseudopotential is used as an approximation of the nucleus-valence electron and core electron-valence electron interaction.
 
 
 .. container:: justify
@@ -179,10 +170,10 @@ System definition
 
    Then we add our topology information, like coordinates and system size.
 
-   First, we need to provide CP2K with a starting configuration. Todo so copy *resources/argon.xyz* to your directory *dft_liquid_argon_85*. 
-   Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize *argon.xyz* with *vmd*. This is our starting configuration. 
+   First, we need to provide CP2K with a starting configuration. Todo so copy ``resources/argon.xyz`` to your directory ``dft/liquid_argon_85K``. 
+   Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize ``argon.xyz`` with *vmd*. This is our starting configuration. 
 
-   We now tell CP2K to use this file using
+   We now tell CP2K to use this file
 
 .. code-block:: cp2k
     :dedent: 0
@@ -355,7 +346,7 @@ Running your simulation
 
 .. container:: justify
 
-    You've made it! Your input file *Argon_Simulation.inp* is now complete!
+    You've made it! Your input file ``Argon_Simulation.inp`` is now complete!
 
     You can run the simulation using
 
@@ -367,8 +358,9 @@ Running your simulation
 
 .. container:: justify
 
-    Here *-i* specifies the input file. You will get 4 files
-    - `Argon_Simulation-pos.xyz` with the atomic coordinates
-    - `Argon_Simulation-frc.xyz` with the force on each atom
-    - `Argon_Simulation-vel.xyz` with the velocity on each atom
-    - `Argon_Simulation-n.restart` which is a restart file for the simulation
+    Here ``-i`` specifies the input file. You will get 4 files
+
+    * ``Argon_Simulation-pos.xyz`` with the atomic coordinates
+    * ``Argon_Simulation-frc.xyz`` with the force on each atom
+    * ``Argon_Simulation-vel.xyz`` with the velocity on each atom
+    * ``Argon_Simulation-n.restart`` which is a restart file for the simulation
