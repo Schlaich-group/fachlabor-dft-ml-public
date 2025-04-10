@@ -13,12 +13,13 @@ Getting started
 
 .. container:: justify 
 
-    To run a simulation in CP2K, one needs to provide CP2K with an input script. 
+    To run a simulation in CP2K, one needs to provide CP2K with an input script and a starting configuration :download:`system.xyz <./system.xyz>`.
 
 .. container:: justify
 
-    Got into your folder ``dft/liquid_argon_85K``, and then create a blank text file in it
-    called ``Argon_Simulation.inp``. Copy the following lines in the ``Argon_Simulation.inp``, where a line starting with 
+    Go into your folder ``dft/liquid_argon_85K``, and place :download:`system.xyz <./system.xyz>` in it. 
+    Then create a blank text file in your folder called ``Argon_Simulation.inp``. 
+    Copy the following lines in the ``Argon_Simulation.inp``, where a line starting with 
     a hash symbol (#) is a comment ignored by CP2K:
 
 .. code-block:: cp2k
@@ -68,7 +69,7 @@ Force Calculation with DFT
 
 .. container:: justify
 
-    Next, we need to specify a basis set and a potential. First, copy the files in ``resources/dft/BASIS_MOLOPT`` and ``GTH_POTENTIALS`` to your directory ``dft/liquid_argon_85K``. Then we import our files by specifying the following in ``Argon_Simulation.inp``
+    Next, we need to specify a basis set and a potential. First, place the files in :download:`BASIS_MOLOPT` and :download:`GTH_POTENTIALS` to your directory ``dft/liquid_argon_85K``. Then we import our files by specifying the following in ``Argon_Simulation.inp``
 
 .. code-block:: cp2k
     :dedent: 0

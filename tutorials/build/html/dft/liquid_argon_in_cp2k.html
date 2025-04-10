@@ -280,11 +280,12 @@
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
 <div class="justify docutils container">
-<p>To run a simulation in CP2K, one needs to provide CP2K with an input script.</p>
+<p>To run a simulation in CP2K, one needs to provide CP2K with an input script and a starting configuration <a class="reference download internal" download="" href="../_downloads/8c7dcb0725d43d3f2fb968af8668bdc2/system.xyz"><code class="xref download docutils literal notranslate"><span class="pre">system.xyz</span></code></a>.</p>
 </div>
 <div class="justify docutils container">
-<p>Got into your folder <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>, and then create a blank text file in it
-called <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>. Copy the following lines in the <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>, where a line starting with
+<p>Go into your folder <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>, and place <a class="reference download internal" download="" href="../_downloads/8c7dcb0725d43d3f2fb968af8668bdc2/system.xyz"><code class="xref download docutils literal notranslate"><span class="pre">system.xyz</span></code></a> in it.
+Then create a blank text file in your folder called <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>.
+Copy the following lines in the <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>, where a line starting with
 a hash symbol (#) is a comment ignored by CP2K:</p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span> <span class="c"># Name of the project</span>
@@ -326,7 +327,7 @@ Start with the following two lines</p>
 </pre></div>
 </div>
 <div class="justify docutils container">
-<p>Next, we need to specify a basis set and a potential. First, copy the files in <code class="docutils literal notranslate"><span class="pre">resources/dft/BASIS_MOLOPT</span></code> and <code class="docutils literal notranslate"><span class="pre">GTH_POTENTIALS</span></code> to your directory <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>. Then we import our files by specifying the following in <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code></p>
+<p>Next, we need to specify a basis set and a potential. First, place the files in <a class="reference download internal" download="" href="../_downloads/4f27ae4781313b121d470f26e953a692/BASIS_MOLOPT"><code class="xref download docutils literal notranslate"><span class="pre">BASIS_MOLOPT</span></code></a> and <a class="reference download internal" download="" href="../_downloads/1c3fad7229ad14a7b959aeb07fb218a0/GTH_POTENTIALS"><code class="xref download docutils literal notranslate"><span class="pre">GTH_POTENTIALS</span></code></a> to your directory <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>. Then we import our files by specifying the following in <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code></p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        BASIS_SET_FILE_NAME BASIS_MOLOPT
         POTENTIAL_FILE_NAME GTH_POTENTIALS
