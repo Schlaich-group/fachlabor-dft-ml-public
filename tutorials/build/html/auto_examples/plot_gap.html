@@ -282,7 +282,9 @@ to download the full example code.</p>
 <p>In this tutorial you will learn to use the trained ml potential on validation data.
 We do this to evaluate how well GAP has learned the energies and forces
 Let us start by importing some Python modules.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># uncomment the following line when running a jupyter notebook</span>
+<span class="c1"># % matplot inline</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">ase</span>
@@ -296,10 +298,11 @@ Let us start by importing some Python modules.</p>
 </div>
 <p>Then we define our project path. Replace the path with your own project path</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_PATH</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;../../../solutions/&quot;</span><span class="p">)</span>
+<span class="n">CUT_OFF_FOLDER</span> <span class="o">=</span> <span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/cut_off_4A&quot;</span>
 </pre></div>
 </div>
 <p>Then we load our ML potential.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ml_potential</span> <span class="o">=</span> <span class="n">Potential</span><span class="p">(</span><span class="n">param_filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/SOAP_500.xml&quot;</span><span class="p">))</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ml_potential</span> <span class="o">=</span> <span class="n">Potential</span><span class="p">(</span><span class="n">param_filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUT_OFF_FOLDER</span> <span class="o">/</span> <span class="s2">&quot;SOAP.xml&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Let us try out the ML potential. First, we create an Atoms object</p>
@@ -315,9 +318,9 @@ Let us start by importing some Python modules.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:42: FutureWarning: Please use atoms.calc = calc
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:45: FutureWarning: Please use atoms.calc = calc
   two_argon_atoms.set_calculator(ml_potential)
--1146.9901101622613
+-1146.9424359067043
 </pre></div>
 </div>
 <p>To evaluate the ML potential, we will compare predicted energies (and forces) with DFT energies (and forces). To do so, we will load the coordinates, energies and forces from the DFT simulation. Then we will predict the energy for the coordinates using the ML potential, and compare with the reference energies from the DFT simulation.</p>
@@ -422,17 +425,19 @@ Let us start by importing some Python modules.</p>
     <span class="n">rmse_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">_rms</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">2e</span><span class="si">}</span><span class="s2"> +- </span><span class="si">{</span><span class="n">_rms</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">2e</span><span class="si">}</span><span class="s2"> eV/A&quot;</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">rmse_text</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
             <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_rms</span>
 </pre></div>
 </div>
 <p>Finally, we plot the error and force correlation plots for the training data.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">energy_plot</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/train.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Energy on training data&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/energy_plot_500.png&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">CUT_OFF_FOLDER</span> <span class="o">/</span> <span class="s2">&quot;energy_plot_train.png&quot;</span><span class="p">)</span>
 
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">force_plot</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/train.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Force on training data&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/force_plot_500.png&quot;</span><span class="p">)</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">force_plot</span><span class="p">(</span><span class="n">PROJECT_PATH</span> <span class="o">/</span> <span class="s2">&quot;gap/train.xyz&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;Force on training data&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">CUT_OFF_FOLDER</span> <span class="o">/</span> <span class="s2">&quot;force_plot_train.png&quot;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">CUT_OFF_FOLDER</span> <span class="o">/</span> <span class="s2">&quot;force_rmse_train.txt&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">rmse</span><span class="p">[</span><span class="s2">&quot;rmse&quot;</span><span class="p">],</span> <span class="n">rmse</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]])</span>
 </pre></div>
 </div>
 <ul class="sphx-glr-horizontal">
@@ -443,18 +448,19 @@ Let us start by importing some Python modules.</p>
 number of frames 500
 position array has shape (108, 3)
 108
-/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:85: FutureWarning: Please use atoms.calc = calc
+/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:88: FutureWarning: Please use atoms.calc = calc
   frame.set_calculator(ml_potential)
-7.878274713952334e-06
-/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:126: FutureWarning: Please use atoms.calc = calc
+4.8678426428232424e-05
+/work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:129: FutureWarning: Please use atoms.calc = calc
   at_in.set_calculator(ml_potential)
 54000
 (3,)
 (54000,)
-0.0014386871446798366
+0.00368252725422809
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 4.277 seconds)</p>
+<p>Plot force and error correlation for your validation data set as well.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 40.638 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-gap-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a07e0e663068e7ea01eb3cc780f041ba/plot_gap.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gap.ipynb</span></code></a></p>

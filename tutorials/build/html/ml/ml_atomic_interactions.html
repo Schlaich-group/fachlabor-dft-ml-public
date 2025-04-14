@@ -282,30 +282,28 @@ to learn the energies and forces of liquid argon.</p>
 <p class="admonition-title">Requirements</p>
 <ul class="simple">
 <li><p>an xyz file with the energies and forces of liquid argon</p></li>
-<li><p>for example generated with CP2K (:ref: <cite>liquid_argon_cp2k</cite>)</p></li>
+<li><p>for example generated with CP2K (<a class="reference internal" href="../dft/liquid_argon_in_cp2k.html#liquid-argon-in-cp2k"><span class="std std-ref">Liquid argon with CP2K</span></a>)</p></li>
 </ul>
 </div>
 <section id="setting-up-our-work-environment">
 <h2>Setting up our work environment<a class="headerlink" href="#setting-up-our-work-environment" title="Link to this heading">¶</a></h2>
 <div class="justify docutils container">
-<p>Create the following folder structure</p>
+<p>Open VSCode (or any other editor of your choice) and
+create the following folder structure</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">your</span><span class="o">-</span><span class="n">project</span>
 <span class="o">|</span>   <span class="o">|---</span><span class="n">dft</span>
-<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Argon_Simulation</span><span class="o">-</span><span class="n">pos</span><span class="o">.</span><span class="n">xyz</span>
-<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Argon_Simulation</span><span class="o">-</span><span class="n">frc</span><span class="o">.</span><span class="n">xyz</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="mi">2</span><span class="n">_body_potential</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">liquid_argon_85K</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Argon_Simulation</span><span class="o">-</span><span class="n">pos</span><span class="o">-</span><span class="mf">1.</span><span class="n">xyz</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Argon_Simulation</span><span class="o">-</span><span class="n">frc</span><span class="o">-</span><span class="mf">1.</span><span class="n">xyz</span>
 <span class="o">|</span>   <span class="o">|---</span><span class="n">gap</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">cut_off_4A</span>
 </pre></div>
 </div>
 <div class="justify docutils container">
-<p>In the following we will work with a Jupyter notebook. To do so, go into your folder <code class="docutils literal notranslate"><span class="pre">gap</span></code> and type</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
-</pre></div>
-</div>
-<div class="justify docutils container">
-<p>Now, the jupyter notebook editor opens in your browser. This is where we will work.
-Continue now with <a class="reference internal" href="../auto_examples/preprocess_dft.html#preprocess-dft"><span class="std std-ref">Preprocessing DFT Data</span></a>.</p>
+<p>In the following we will work with a Jupyter notebook. Todo so, go to the next page <a class="reference internal" href="../auto_examples/preprocess_dft.html#preprocess-dft"><span class="std std-ref">Preprocessing DFT Data</span></a> and download the ipynb notebook from the end of the page.
+Place the notebook into your folder <code class="docutils literal notranslate"><span class="pre">gap/</span></code>, then continue with doing the tutorial <a class="reference internal" href="../auto_examples/preprocess_dft.html#preprocess-dft"><span class="std std-ref">Preprocessing DFT Data</span></a>.</p>
 </div>
 </section>
 </section>

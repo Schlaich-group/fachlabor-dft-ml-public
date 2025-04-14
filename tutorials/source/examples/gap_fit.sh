@@ -1,19 +1,20 @@
 # Fitting GAP 
 # ===========
 #
-# In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data. 
-# GAP is implemented as a command line tool gap_fit
+# In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data.
+# GAP learns the energies and forces as a function of the atomic positions. 
+# It is implemented as a command line tool ``gap_fit``
 # which takes many parameters. 
-# The parameters are specified in the following, and then passed to gap_fit
+# The parameters are specified in the following, and then passed to ``gap_fit``
 
 # %%
 # First, we define our parameters which we want to vary later
-# In this case, that's the Cut-off,
+# In this case, that's the Cut-off of the atomic neighborhood,
 # the output file and the input file.
 
-CUT_OFF=3.0
-GAP_FILE=gap/SOAP.xml
-INPUT_FILE=gap/train_500.xyz
+CUT_OFF=4.0
+GAP_FILE=cut_off_4A/SOAP.xml
+INPUT_FILE=train.xyz
 
 # %% 
 # Next, we have the parameters for GAP. 
@@ -33,11 +34,11 @@ Z2=18 :
 # Then we have the parameters for the SOAP descriptor
 soap 
 # %% 
-# `n_max` and `l_max` is the order of expansion in spherical harmonics
+# ``n_max`` and ``l_max`` is the order of expansion in spherical harmonics
 l_max=6
 n_max=6
 # %%
-# `atom_sigma` is the smearing of the atomic position
+# ``atom_sigma`` is the smearing of the atomic position
 atom_sigma=0.5
 zeta=4
 # %% 
@@ -79,3 +80,6 @@ echo ${GEN_PARAMS[@]}
 
 gap_fit "${GEN_PARAMS[@]}"
 
+# %%
+# To run this script open the terminal, navigate to the folder ``your_project/gap`` 
+# and execute the command ``bash gap_fit.sh``. 

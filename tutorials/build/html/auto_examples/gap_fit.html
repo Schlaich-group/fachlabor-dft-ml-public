@@ -280,15 +280,16 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="fitting-gap">
 <span id="sphx-glr-auto-examples-gap-fit-sh"></span><h1>Fitting GAP<a class="headerlink" href="#fitting-gap" title="Link to this heading">¶</a></h1>
 <p>In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data.
-GAP is implemented as a command line tool gap_fit
+GAP learns the energies and forces as a function of the atomic positions.
+It is implemented as a command line tool <code class="docutils literal notranslate"><span class="pre">gap_fit</span></code>
 which takes many parameters.
-The parameters are specified in the following, and then passed to gap_fit</p>
+The parameters are specified in the following, and then passed to <code class="docutils literal notranslate"><span class="pre">gap_fit</span></code></p>
 <p>First, we define our parameters which we want to vary later
-In this case, that’s the Cut-off,
+In this case, that’s the Cut-off of the atomic neighborhood,
 the output file and the input file.</p>
-<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CUT_OFF</span><span class="o">=</span><span class="m">3</span>.0
-<span class="nv">GAP_FILE</span><span class="o">=</span>gap/SOAP.xml
-<span class="nv">INPUT_FILE</span><span class="o">=</span>gap/train_500.xyz
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CUT_OFF</span><span class="o">=</span><span class="m">4</span>.0
+<span class="nv">GAP_FILE</span><span class="o">=</span>cut_off_4A/SOAP.xml
+<span class="nv">INPUT_FILE</span><span class="o">=</span>train.xyz
 </pre></div>
 </div>
 <p>Next, we have the parameters for GAP.</p>
@@ -311,12 +312,12 @@ the output file and the input file.</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>soap
 </pre></div>
 </div>
-<p><cite>n_max</cite> and <cite>l_max</cite> is the order of expansion in spherical harmonics</p>
+<p><code class="docutils literal notranslate"><span class="pre">n_max</span></code> and <code class="docutils literal notranslate"><span class="pre">l_max</span></code> is the order of expansion in spherical harmonics</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nv">l_max</span><span class="o">=</span><span class="m">6</span>
 <span class="nv">n_max</span><span class="o">=</span><span class="m">6</span>
 </pre></div>
 </div>
-<p><cite>atom_sigma</cite> is the smearing of the atomic position</p>
+<p><code class="docutils literal notranslate"><span class="pre">atom_sigma</span></code> is the smearing of the atomic position</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nv">atom_sigma</span><span class="o">=</span><span class="m">0</span>.5
 <span class="nv">zeta</span><span class="o">=</span><span class="m">4</span>
 </pre></div>
@@ -364,6 +365,8 @@ the output file and the input file.</p>
 gap_fit<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GEN_PARAMS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
+<p>To run this script open the terminal, navigate to the folder <code class="docutils literal notranslate"><span class="pre">your_project/gap</span></code>
+and execute the command <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">gap_fit.sh</span></code>.</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-gap-fit-sh">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/66efc2a1c716e88bb243feb3934506e7/gap_fit.sh"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Bash</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">gap_fit.sh</span></code></a></p>

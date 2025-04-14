@@ -31,7 +31,7 @@ Examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data.  GAP is implemented as a command line tool gap_fit which takes many parameters.  The parameters are specified in the following, and then passed to gap_fit ">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data. GAP learns the energies and forces as a function of the atomic positions.  It is implemented as a command line tool gap_fit which takes many parameters.  The parameters are specified in the following, and then passed to gap_fit ">
 
 .. only:: html
 

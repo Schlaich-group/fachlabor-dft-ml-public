@@ -11,7 +11,10 @@ Setting up our work environment
 
 .. container:: justify
     
-    Create the following folder structure
+    First, we will setup our working environment in VSCode. Note that the following tutorials can also be done with another editor of your choice.
+    Open VSCode and select ``File->Open Folder``. Create a new folder for your project and open it.
+    
+    Then create the following folder structure
     
 .. code-block::
     :dedent: 0 
@@ -23,17 +26,8 @@ Setting up our work environment
     
 .. container:: justify
 
-    In the following we will work with a Jupyter notebook. To do so, go into your folder ``2_body_potential`` and type 
-
-.. code-block:: bash
-    :dedent: 0
-
-    jupyter notebook
-
-.. container:: justify
-    
-    Now, the jupyter notebook editor opens in your browser. This is where we will work. 
-    Continue now with :ref:`2_body_potential`.
+    In the following we will work with a Jupyter notebook. Todo so, go to the next page :ref:`2_body_potential` and download the ipynb notebook from the end of the page.
+    Place the notebook into your folder ``dft/2_body_potential``, then continue with doing the tutorial :ref:`2_body_potential`.
 
 
 

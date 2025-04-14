@@ -28,10 +28,13 @@ To do our energy calculation, ASE will call CP2K, which implements DFT.
 
 First, we import our Python modules
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-24
+.. GENERATED FROM PYTHON SOURCE LINES 14-28
 
 .. code-block:: Python
 
+
+    # uncomment the following line if running a jupyter notebook
+    # %matplotlib inline
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -40,14 +43,15 @@ First, we import our Python modules
     import matplotlib
     import scipy.constants as c
 
-    matplotlib.use("agg")
+    # uncomment the following line if running on a cluster
+    # matplotlib.use("agg")
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-26
+.. GENERATED FROM PYTHON SOURCE LINES 29-30
 
-We also import pint, which will help us to keep track of units
+We also import pint, which will help us to keep track of units.
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-31
+.. GENERATED FROM PYTHON SOURCE LINES 30-35
 
 .. code-block:: Python
 
@@ -57,11 +61,11 @@ We also import pint, which will help us to keep track of units
     ureg = pint.UnitRegistry()
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-33
+.. GENERATED FROM PYTHON SOURCE LINES 36-37
 
 Next, we create an Atoms object with two argon atoms placed a distance apart.
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 37-41
 
 .. code-block:: Python
 
@@ -70,12 +74,12 @@ Next, we create an Atoms object with two argon atoms placed a distance apart.
     two_argon_atoms = Atoms("Ar2", [[0, 0, 0], [0, 0, distance.magnitude]])
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-40
+.. GENERATED FROM PYTHON SOURCE LINES 42-44
 
 We set the cubic simulation box size to something much larger than Ar-Ar distance
-and apply periodic boundary conditions in all directions
+and apply periodic boundary conditions in all directions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-44
+.. GENERATED FROM PYTHON SOURCE LINES 44-48
 
 .. code-block:: Python
 
@@ -84,12 +88,12 @@ and apply periodic boundary conditions in all directions
     two_argon_atoms.pbc = [1, 1, 1]
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-47
+.. GENERATED FROM PYTHON SOURCE LINES 49-51
 
 We will use CP2K as a calculator for our Atoms object.
 First, we specify calculation settings, you will not have to worry about these
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-69
+.. GENERATED FROM PYTHON SOURCE LINES 51-73
 
 .. code-block:: Python
 
@@ -116,11 +120,11 @@ First, we specify calculation settings, you will not have to worry about these
     """
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-71
+.. GENERATED FROM PYTHON SOURCE LINES 74-75
 
 Next, we specify our basis set, pseudo potential and exchange correlation functional
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-81
+.. GENERATED FROM PYTHON SOURCE LINES 75-85
 
 .. code-block:: Python
 
@@ -130,16 +134,16 @@ Next, we specify our basis set, pseudo potential and exchange correlation functi
                                 pseudo_potential="GTH-PBE-q8",
                                 potential_file="GTH_POTENTIALS",
                                 xc="PBE",
-                                command="cp2k.psmp -s",
+                                command="cp2k_shell.psmp",
                                 )
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-83
+.. GENERATED FROM PYTHON SOURCE LINES 86-87
 
 We can now run our first DFT calculation with
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-87
+.. GENERATED FROM PYTHON SOURCE LINES 87-91
 
 .. code-block:: Python
 
@@ -148,12 +152,12 @@ We can now run our first DFT calculation with
     print(E)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-90
+.. GENERATED FROM PYTHON SOURCE LINES 92-94
 
-This will return us a single potential energy for the specified interatomic distance
-Next, we want to sample a region between 1 and 10 angstrom and get the potential energy for each distance
+This will return us a single potential energy for the specified interatomic distance. 
+Next, we want to sample a region between 3.3 and 6.0 Angstrom and get the potential energy for each distance
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-104
+.. GENERATED FROM PYTHON SOURCE LINES 94-108
 
 .. code-block:: Python
 
@@ -172,11 +176,11 @@ Next, we want to sample a region between 1 and 10 angstrom and get the potential
         energies[i] = E
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-106
+.. GENERATED FROM PYTHON SOURCE LINES 109-110
 
 Finally, we plot the energy as a function of the interatomic distance. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-112
+.. GENERATED FROM PYTHON SOURCE LINES 110-119
 
 .. code-block:: Python
 
@@ -185,7 +189,10 @@ Finally, we plot the energy as a function of the interatomic distance.
     plt.xlabel("$R$ in Angstrom")
     plt.ylabel("$E$ in eV")
 
+    # TODO: Plot the LJ potential
+    plt.legend()
     plt.savefig("2body_potential.png", dpi=300)
+    #plt.show()
 
 
 .. _sphx_glr_download_auto_examples_2body_potential.py:

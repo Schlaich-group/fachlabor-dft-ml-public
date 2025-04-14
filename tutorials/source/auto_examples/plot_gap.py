@@ -10,6 +10,8 @@ We do this to evaluate how well GAP has learned the energies and forces
 Let us start by importing some Python modules.
 """
 
+# uncomment the following line when running a jupyter notebook
+# % matplot inline
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
@@ -25,10 +27,11 @@ matplotlib.use("agg")
 # Then we define our project path. Replace the path with your own project path
 
 PROJECT_PATH=Path("../../../solutions/")
+CUT_OFF_FOLDER = PROJECT_PATH / "gap/cut_off_4A"
 
 # %%
 # Then we load our ML potential. 
-ml_potential = Potential(param_filename=str(PROJECT_PATH / "gap/SOAP_500.xml"))
+ml_potential = Potential(param_filename=str(CUT_OFF_FOLDER / "SOAP.xml"))
 
 # %%
 # Let us try out the ML potential. First, we create an Atoms object 
@@ -148,17 +151,22 @@ def force_plot(in_file, ax, symbol='HO', title='Plot of force'):
     rmse_text = f"RMSE: {_rms['rmse']:2e} +- {_rms['std']:2e} eV/A"
     ax.text(0.9, 0.1, rmse_text, transform=ax.transAxes, fontsize='small', horizontalalignment='right',
             verticalalignment='bottom')
+    return _rms
 
 # %%
 # Finally, we plot the error and force correlation plots for the training data.
 
 fig, ax = plt.subplots(1, 1)
 energy_plot(PROJECT_PATH / "gap/train.xyz", ax, "Energy on training data")
-fig.savefig("plots/energy_plot_500.png")
+fig.savefig(CUT_OFF_FOLDER / "energy_plot_train.png")
 
 
 fig, ax = plt.subplots(1, 1)
-force_plot(PROJECT_PATH / "gap/train.xyz", ax, "Force on training data")
-fig.savefig("plots/force_plot_500.png")
+rmse = force_plot(PROJECT_PATH / "gap/train.xyz", ax, "Force on training data")
+fig.savefig(CUT_OFF_FOLDER / "force_plot_train.png")
+np.savetxt(CUT_OFF_FOLDER / "force_rmse_train.txt", [rmse["rmse"], rmse["std"]])
+
+# %%
+# Plot force and error correlation for your validation data set as well. 
 
 

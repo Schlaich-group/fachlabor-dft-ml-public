@@ -280,10 +280,10 @@
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
 <div class="justify docutils container">
-<p>To run a simulation in CP2K, one needs to provide CP2K with an input script and a starting configuration <a class="reference download internal" download="" href="../_downloads/8c7dcb0725d43d3f2fb968af8668bdc2/system.xyz"><code class="xref download docutils literal notranslate"><span class="pre">system.xyz</span></code></a>.</p>
+<p>To run a simulation in CP2K, one needs to provide CP2K with an input script.</p>
 </div>
 <div class="justify docutils container">
-<p>Go into your folder <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>, and place <a class="reference download internal" download="" href="../_downloads/8c7dcb0725d43d3f2fb968af8668bdc2/system.xyz"><code class="xref download docutils literal notranslate"><span class="pre">system.xyz</span></code></a> in it.
+<p>Go into your folder <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>, and place in it.
 Then create a blank text file in your folder called <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>.
 Copy the following lines in the <code class="docutils literal notranslate"><span class="pre">Argon_Simulation.inp</span></code>, where a line starting with
 a hash symbol (#) is a comment ignored by CP2K:</p>
@@ -407,13 +407,14 @@ Start your system section with</p>
 </div>
 <div class="justify docutils container">
 <p>Then we add our topology information, like coordinates and system size.</p>
-<p>First, we need to provide CP2K with a starting configuration. Todo so copy <code class="docutils literal notranslate"><span class="pre">resources/argon.xyz</span></code> to your directory <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>.
-Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize <code class="docutils literal notranslate"><span class="pre">argon.xyz</span></code> with <em>vmd</em>. This is our starting configuration.</p>
+<p>First, we need to provide CP2K with a starting configuration. Todo so place <a class="reference download internal" download="" href="../_downloads/8c7dcb0725d43d3f2fb968af8668bdc2/system.xyz"><code class="xref download docutils literal notranslate"><span class="pre">system.xyz</span></code></a> in your directory <code class="docutils literal notranslate"><span class="pre">dft/liquid_argon_85K</span></code>.
+Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom.
+You can also visualize <a class="reference download internal" download="" href="../_downloads/8c7dcb0725d43d3f2fb968af8668bdc2/system.xyz"><code class="xref download docutils literal notranslate"><span class="pre">system.xyz</span></code></a> with <em>vmd</em>. This is our starting configuration.</p>
 <p>We now tell CP2K to use this file</p>
 </div>
 <div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="nb">&amp;TOPOLOGY</span>
             <span class="c"># Starting configuration.</span>
-            COORD_FILE_NAME argon.xyz
+            COORD_FILE_NAME system.xyz
             COORD_FILE_FORMAT XYZ
             <span class="nb">&amp;GENERATE</span>
             <span class="nb">&amp;END</span> GENERATE
@@ -502,7 +503,7 @@ Take a look into the file. The first line in the xyz format specifies the number
 <div class="justify docutils container">
 <p>and finally, we close the MD section with</p>
 </div>
-<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span><span class="nb">&amp;END</span> MD
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>    <span class="nb">&amp;END</span> MD
 </pre></div>
 </div>
 <section id="writing-coordinates-and-forces">
@@ -510,7 +511,7 @@ Take a look into the file. The first line in the xyz format specifies the number
 <div class="justify docutils container">
 <p>Now, we tell CP2K which information to write to an output file using &amp;PRINT. We tell CP2K to write out the coordinates, velocities and forces. We also tell CP2K to write a restart file every step.</p>
 </div>
-<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>        <span class="c"># Define print statements</span>
+<div class="highlight-cp2k notranslate"><div class="highlight"><pre><span></span>    <span class="c"># Define print statements</span>
     <span class="nb">&amp;PRINT</span>
         <span class="nb">&amp;TRAJECTORY</span>
         <span class="nb">&amp;END</span> TRAJECTORY

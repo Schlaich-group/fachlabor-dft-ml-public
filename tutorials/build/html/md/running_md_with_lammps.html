@@ -316,17 +316,18 @@ previous tutorial, so no potential file is needed.
 We also do not need a data file, as the setup is rather simple and we will therefore generate the initial
 configuration directly in the input script.
 So the only file we need to prepare is the input script.
-In the “md” directory, you will find an almost finished version of it as “Ar.in”:</p>
+In the <code class="docutils literal notranslate"><span class="pre">md</span></code> directory, create a new file <code class="docutils literal notranslate"><span class="pre">Ar.lmp</span></code>:</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">your</span><span class="o">-</span><span class="n">project</span>
 <span class="o">|</span>   <span class="o">|---</span><span class="n">dft</span>
 <span class="o">|</span>   <span class="o">|---</span><span class="n">gap</span>
 <span class="o">|</span>   <span class="o">|---</span><span class="n">md</span>
-<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Ar</span><span class="o">.</span><span class="ow">in</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">|---</span><span class="n">Ar</span><span class="o">.</span><span class="n">lmp</span>
 </pre></div>
 </div>
 <div class="justify docutils container">
-<p>It is designed to guide users who are new to LAMMPS through their first simulation.
+<p>In the following, we will populate <code class="docutils literal notranslate"><span class="pre">Ar.lmp</span></code> with content.
+It is designed to guide users who are new to LAMMPS through their first simulation.
 Next to the commands, you will find some information which either briefly explain what is done at this point or
 give some hints.  It is a good praxis to also check out the official LAMMPS documentation, which provides more
 in-depth information and examples of each command. It can be found here
@@ -366,8 +367,9 @@ to 1 (in this case, we only have one type of atom, which is Argon) and assigning
 We will read in the file “argon.xyz” that contains the coordinates of the atoms, and assign types, masses, a group (“Ar”) and velocities to them.
 LAMMPS does not know about elements as defined in the periodic table, so we need to define all relevant attributes of our atoms by ourselves.</p>
 </div>
-<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">read_dump</span><span class="w">       </span><span class="n">argon.xyz</span><span class="w"> </span><span class="m">0</span><span class="w">      </span><span class="n">x</span><span class="w">    </span><span class="n">y</span><span class="w">      </span><span class="n">z</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">yes</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">xyz</span>
-<span class="k">set</span><span class="w">                 </span><span class="n">atom</span><span class="w">      </span><span class="m">1</span><span class="o">*</span><span class="m">108</span><span class="w">  </span><span class="n">type</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">labelmap</span><span class="w"> </span><span class="n">atom</span><span class="w">   </span><span class="m">1</span><span class="w"> </span><span class="n">Ar</span>
+<span class="k">create_atoms</span><span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">420</span><span class="w"> </span><span class="n">simbox</span><span class="w"> </span><span class="n">overlap</span><span class="w"> </span><span class="m">0.3</span>
+<span class="k">set</span><span class="w">             </span><span class="n">atom</span><span class="w">      </span><span class="m">1</span><span class="o">*</span><span class="m">108</span><span class="w">  </span><span class="n">type</span><span class="w"> </span><span class="m">1</span>
 <span class="k">mass</span><span class="w">            </span><span class="m">1</span><span class="w">         </span><span class="m">39.948</span>
 <span class="k">group           </span><span class="nv nv-Identifier">Ar</span><span class="w">        </span><span class="n">type</span><span class="w">   </span><span class="m">1</span>
 <span class="k">velocity        </span><span class="nv nv-Identifier">all</span><span class="w">       </span><span class="n">create</span><span class="w"> </span><span class="m">900</span><span class="w">  </span><span class="m">132465</span>
@@ -378,10 +380,11 @@ LAMMPS does not know about elements as defined in the periodic table, so we need
 Without a potential, LAMMPS wouldn’t not know how to calculate the forces acting on the atoms.
 We will use the pair_style quip command, which interaces to our machine learned potential (MLP) model that was trained on DFT data.
 We also need to tell LAMMPS that the potentials should be used for all possible atom pairs. This is done using the asterisk (*) twice, which means
-that we consider the interaction of all atom types with each other followed bt the path to the MLP file.</p>
+that we consider the interaction of all atom types with each other followed bt the path to the MLP file. Then we specify the file <code class="docutils literal notranslate"><span class="pre">SOAP.xml</span></code>, and the label.
+To obtain the correct label, take a look in <code class="docutils literal notranslate"><span class="pre">../gap/cut_off_5A/SOAP.xml</span></code>. The last number <code class="docutils literal notranslate"><span class="pre">18</span></code> specifies the atomic charge number.</p>
 </div>
 <div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">pair_style</span><span class="w">      </span><span class="n">quip</span>
-<span class="k">pair_coeff</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">..</span><span class="o">/</span><span class="n">gap</span><span class="o">/</span><span class="n">SOAP_500.xml</span><span class="w"> </span><span class="s">&quot;Potential xml_label=GAP_2025_2_21_60_23_19_51_451&quot;</span><span class="w"> </span><span class="m">18</span>
+<span class="k">pair_coeff</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">..</span><span class="o">/</span><span class="n">gap</span><span class="o">/</span><span class="n">cut_off_5A</span><span class="o">/</span><span class="n">SOAP.xml</span><span class="w"> </span><span class="s">&quot;Potential xml_label=GAP_2025_2_21_60_23_19_51_451&quot;</span><span class="w"> </span><span class="m">18</span>
 </pre></div>
 </div>
 <div class="justify docutils container">

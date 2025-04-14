@@ -49,7 +49,7 @@ Input preparation
    We also do not need a data file, as the setup is rather simple and we will therefore generate the initial
    configuration directly in the input script.
    So the only file we need to prepare is the input script.
-   In the "md" directory, you will find an almost finished version of it as "Ar.in":
+   In the ``md`` directory, create a new file ``Ar.lmp``:
 
 .. code-block::
     :dedent: 0 
@@ -58,10 +58,11 @@ Input preparation
     |   |---dft
     |   |---gap
     |   |---md
-    |   |   |---Ar.in
+    |   |   |---Ar.lmp
    
 .. container:: justify 
    
+   In the following, we will populate ``Ar.lmp`` with content.
    It is designed to guide users who are new to LAMMPS through their first simulation.
    Next to the commands, you will find some information which either briefly explain what is done at this point or 
    give some hints.  It is a good praxis to also check out the official LAMMPS documentation, which provides more
@@ -115,8 +116,9 @@ Input preparation
 .. code-block:: lammps
     :dedent: 0 
 
-    read_dump       argon.xyz 0      x    y      z box no add yes format xyz
-    set		        atom      1*108  type 1
+    labelmap atom   1 Ar
+    create_atoms    1 random 108 420 simbox overlap 0.3
+    set		    atom      1*108  type 1
     mass            1         39.948
     group           Ar        type   1
     velocity        all       create 900  132465
@@ -127,13 +129,14 @@ Input preparation
     Without a potential, LAMMPS wouldn't not know how to calculate the forces acting on the atoms.
     We will use the pair_style quip command, which interaces to our machine learned potential (MLP) model that was trained on DFT data.
     We also need to tell LAMMPS that the potentials should be used for all possible atom pairs. This is done using the asterisk (*) twice, which means
-    that we consider the interaction of all atom types with each other followed bt the path to the MLP file.
+    that we consider the interaction of all atom types with each other followed bt the path to the MLP file. Then we specify the file ``SOAP.xml``, and the label.
+    To obtain the correct label, take a look in ``../gap/cut_off_5A/SOAP.xml``. The last number ``18`` specifies the atomic charge number. 
 
 .. code-block:: lammps
     :dedent: 0 
 
     pair_style      quip
-    pair_coeff      * * ../gap/SOAP_500.xml "Potential xml_label=GAP_2025_2_21_60_23_19_51_451" 18
+    pair_coeff      * * ../gap/cut_off_5A/SOAP.xml "Potential xml_label=GAP_2025_2_21_60_23_19_51_451" 18
 
 
 .. container:: justify

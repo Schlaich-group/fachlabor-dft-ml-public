@@ -12,6 +12,9 @@ To do our energy calculation, ASE will call CP2K, which implements DFT.
 First, we import our Python modules
 """
 
+# uncomment the following line if running a jupyter notebook
+# %matplotlib inline
+
 import numpy as np
 import matplotlib.pyplot as plt
 from ase import Atoms
@@ -19,10 +22,11 @@ from ase.calculators.cp2k import CP2K
 import matplotlib
 import scipy.constants as c
 
-matplotlib.use("agg")
+# uncomment the following line if running on a cluster
+# matplotlib.use("agg")
 
 # %%
-# We also import pint, which will help us to keep track of units
+# We also import pint, which will help us to keep track of units.
 
 import pint
 
@@ -36,7 +40,7 @@ two_argon_atoms = Atoms("Ar2", [[0, 0, 0], [0, 0, distance.magnitude]])
 
 # %%
 # We set the cubic simulation box size to something much larger than Ar-Ar distance
-# and apply periodic boundary conditions in all directions
+# and apply periodic boundary conditions in all directions.
 
 two_argon_atoms.center(vacuum=3)
 two_argon_atoms.pbc = [1, 1, 1]
@@ -74,7 +78,7 @@ two_argon_atoms.calc = CP2K(inp=inp,
                             pseudo_potential="GTH-PBE-q8",
                             potential_file="GTH_POTENTIALS",
                             xc="PBE",
-                            command="cp2k.psmp -s",
+                            command="cp2k_shell.psmp",
                             )
 
 
@@ -85,8 +89,8 @@ E = two_argon_atoms.get_potential_energy()
 print(E)
 
 # %% 
-# This will return us a single potential energy for the specified interatomic distance
-# Next, we want to sample a region between 1 and 10 angstrom and get the potential energy for each distance
+# This will return us a single potential energy for the specified interatomic distance. 
+# Next, we want to sample a region between 3.3 and 6.0 Angstrom and get the potential energy for each distance
 
 distances = np.linspace(3.3, 6.0, 20)
 energies = np.zeros(distances.shape)
@@ -108,4 +112,7 @@ plt.plot(distances, energies, "x", label="DFT")
 plt.xlabel("$R$ in Angstrom")
 plt.ylabel("$E$ in eV")
 
+# TODO: Plot the LJ potential
+plt.legend()
 plt.savefig("2body_potential.png", dpi=300)
+#plt.show()

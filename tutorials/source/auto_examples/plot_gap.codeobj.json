@@ -22,6 +22,15 @@
    "name": "Atoms"
   }
  ],
+ "CUT_OFF_FOLDER": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PosixPath"
+  }
+ ],
  "E": [
   {
    "is_class": false,
@@ -849,6 +858,22 @@
    "name": "round"
   }
  ],
+ "np.savetxt": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "numpy",
+   "module_short": "numpy",
+   "name": "savetxt"
+  }
+ ],
  "np.shape": [
   {
    "is_class": false,
@@ -936,6 +961,15 @@
    "module": "builtins",
    "module_short": "builtins",
    "name": "function"
+  }
+ ],
+ "rmse": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "dict"
   }
  ],
  "two_argon_atoms": [

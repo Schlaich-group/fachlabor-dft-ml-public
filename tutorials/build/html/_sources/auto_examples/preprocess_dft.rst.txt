@@ -28,31 +28,32 @@ Furthermore, GAP uses slightly different labelling from CP2K. That's why we need
 
 We start with importing our python modules. We use tqdm to show a nice progress bar and pint to do unit conversions
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-18
+.. GENERATED FROM PYTHON SOURCE LINES 14-19
 
 .. code-block:: Python
 
+    from pathlib import Path
     from tqdm import tqdm
     import pint
     ureg = pint.UnitRegistry()
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-20
+.. GENERATED FROM PYTHON SOURCE LINES 20-21
 
 Then we set our project path. Replace this with your own project path
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-22
+.. GENERATED FROM PYTHON SOURCE LINES 21-23
 
 .. code-block:: Python
 
     PROJECT_PATH = Path("../../../solutions")
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-24
+.. GENERATED FROM PYTHON SOURCE LINES 24-25
 
 Now, we define our conversion constants
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-27
+.. GENERATED FROM PYTHON SOURCE LINES 25-28
 
 .. code-block:: Python
 
@@ -60,11 +61,11 @@ Now, we define our conversion constants
     HARTREE_TO_EVOLT = (1 * ureg.hartree).to(ureg.e * ureg.volt).magnitude
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-29
+.. GENERATED FROM PYTHON SOURCE LINES 29-30
 
 Next, we have our converter. You don't have to read the whole function, just take a look at the parameters the function takes as an input. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-156
+.. GENERATED FROM PYTHON SOURCE LINES 30-157
 
 .. code-block:: Python
 
@@ -196,27 +197,27 @@ Next, we have our converter. You don't have to read the whole function, just tak
                     f.write("\n")
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-158
+.. GENERATED FROM PYTHON SOURCE LINES 158-159
 
-We now call the converter on our DFT files
+We now call the converter on our DFT files.
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-167
+.. GENERATED FROM PYTHON SOURCE LINES 159-168
 
 .. code-block:: Python
 
 
     _xyz_to_extxyz(
         outfile=PROJECT_PATH / "gap/trajectory",
-        positions=PROJECT_PATH / "dft/Argon_Simulation-pos-1.xyz",
-        forces=PROJECT_PATH / "dft/Argon_Simulation-frc-1.xyz",
+        positions=PROJECT_PATH / "dft/liquid_argon_85K/Argon_Simulation-pos-1.xyz",
+        forces=PROJECT_PATH / "dft/liquid_argon_85K/Argon_Simulation-frc-1.xyz",
         lattice=[[17.0742, 0, 0],
                  [0, 17.0742, 0],
                  [0, 0, 17.0742]])
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-169
+.. GENERATED FROM PYTHON SOURCE LINES 169-170
 
-The converted file can be found in ``gap/train.xyz``
+The converted file can be found in ``gap/data/trajectory.xyz``
 
 
 .. _sphx_glr_download_auto_examples_preprocess_dft.py:

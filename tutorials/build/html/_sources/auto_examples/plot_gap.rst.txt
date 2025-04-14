@@ -26,11 +26,13 @@ In this tutorial you will learn to use the trained ml potential on validation da
 We do this to evaluate how well GAP has learned the energies and forces
 Let us start by importing some Python modules.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-24
+.. GENERATED FROM PYTHON SOURCE LINES 12-26
 
 .. code-block:: Python
 
 
+    # uncomment the following line when running a jupyter notebook
+    # % matplot inline
     import numpy as np
     import matplotlib.pyplot as plt
     import matplotlib
@@ -49,16 +51,17 @@ Let us start by importing some Python modules.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-26
+.. GENERATED FROM PYTHON SOURCE LINES 27-28
 
 Then we define our project path. Replace the path with your own project path
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 28-32
 
 .. code-block:: Python
 
 
     PROJECT_PATH=Path("../../../solutions/")
+    CUT_OFF_FOLDER = PROJECT_PATH / "gap/cut_off_4A"
 
 
 
@@ -67,15 +70,15 @@ Then we define our project path. Replace the path with your own project path
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-31
+.. GENERATED FROM PYTHON SOURCE LINES 33-34
 
 Then we load our ML potential. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-33
+.. GENERATED FROM PYTHON SOURCE LINES 34-36
 
 .. code-block:: Python
 
-    ml_potential = Potential(param_filename=str(PROJECT_PATH / "gap/SOAP_500.xml"))
+    ml_potential = Potential(param_filename=str(CUT_OFF_FOLDER / "SOAP.xml"))
 
 
 
@@ -84,11 +87,11 @@ Then we load our ML potential.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-35
+.. GENERATED FROM PYTHON SOURCE LINES 37-38
 
 Let us try out the ML potential. First, we create an Atoms object 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-40
+.. GENERATED FROM PYTHON SOURCE LINES 38-43
 
 .. code-block:: Python
 
@@ -104,11 +107,11 @@ Let us try out the ML potential. First, we create an Atoms object
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-42
+.. GENERATED FROM PYTHON SOURCE LINES 44-45
 
 Then we set the calculator to ``ml_potential`` and caculate the energy of the system
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-46
+.. GENERATED FROM PYTHON SOURCE LINES 45-49
 
 .. code-block:: Python
 
@@ -124,22 +127,22 @@ Then we set the calculator to ``ml_potential`` and caculate the energy of the sy
 
  .. code-block:: none
 
-    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:42: FutureWarning: Please use atoms.calc = calc
+    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:45: FutureWarning: Please use atoms.calc = calc
       two_argon_atoms.set_calculator(ml_potential)
-    -1146.9901101622613
+    -1146.9424359067043
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 47-48
-
-To evaluate the ML potential, we will compare predicted energies (and forces) with DFT energies (and forces). To do so, we will load the coordinates, energies and forces from the DFT simulation. Then we will predict the energy for the coordinates using the ML potential, and compare with the reference energies from the DFT simulation.
 
 .. GENERATED FROM PYTHON SOURCE LINES 50-51
 
+To evaluate the ML potential, we will compare predicted energies (and forces) with DFT energies (and forces). To do so, we will load the coordinates, energies and forces from the DFT simulation. Then we will predict the energy for the coordinates using the ML potential, and compare with the reference energies from the DFT simulation.
+
+.. GENERATED FROM PYTHON SOURCE LINES 53-54
+
 To quantify the error, we calculate the root mean square (RMS) error between the reference data and the predicted data. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-68
+.. GENERATED FROM PYTHON SOURCE LINES 54-71
 
 .. code-block:: Python
 
@@ -167,11 +170,11 @@ To quantify the error, we calculate the root mean square (RMS) error between the
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-70
+.. GENERATED FROM PYTHON SOURCE LINES 72-73
 
 Next, we have a function to plot the predicted energy against the reference energy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-108
+.. GENERATED FROM PYTHON SOURCE LINES 73-111
 
 .. code-block:: Python
 
@@ -220,11 +223,11 @@ Next, we have a function to plot the predicted energy against the reference ener
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 109-110
+.. GENERATED FROM PYTHON SOURCE LINES 112-113
 
 Then, we have a function to plot the predicted force against the reference force.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-152
+.. GENERATED FROM PYTHON SOURCE LINES 113-156
 
 .. code-block:: Python
 
@@ -269,6 +272,7 @@ Then, we have a function to plot the predicted force against the reference force
         rmse_text = f"RMSE: {_rms['rmse']:2e} +- {_rms['std']:2e} eV/A"
         ax.text(0.9, 0.1, rmse_text, transform=ax.transAxes, fontsize='small', horizontalalignment='right',
                 verticalalignment='bottom')
+        return _rms
 
 
 
@@ -277,24 +281,24 @@ Then, we have a function to plot the predicted force against the reference force
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-154
+.. GENERATED FROM PYTHON SOURCE LINES 157-158
 
 Finally, we plot the error and force correlation plots for the training data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-165
+.. GENERATED FROM PYTHON SOURCE LINES 158-169
 
 .. code-block:: Python
 
 
     fig, ax = plt.subplots(1, 1)
     energy_plot(PROJECT_PATH / "gap/train.xyz", ax, "Energy on training data")
-    fig.savefig("plots/energy_plot_500.png")
+    fig.savefig(CUT_OFF_FOLDER / "energy_plot_train.png")
 
 
     fig, ax = plt.subplots(1, 1)
-    force_plot(PROJECT_PATH / "gap/train.xyz", ax, "Force on training data")
-    fig.savefig("plots/force_plot_500.png")
-
+    rmse = force_plot(PROJECT_PATH / "gap/train.xyz", ax, "Force on training data")
+    fig.savefig(CUT_OFF_FOLDER / "force_plot_train.png")
+    np.savetxt(CUT_OFF_FOLDER / "force_rmse_train.txt", [rmse["rmse"], rmse["std"]])
 
 
 
@@ -325,23 +329,27 @@ Finally, we plot the error and force correlation plots for the training data.
     number of frames 500
     position array has shape (108, 3)
     108
-    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:85: FutureWarning: Please use atoms.calc = calc
+    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:88: FutureWarning: Please use atoms.calc = calc
       frame.set_calculator(ml_potential)
-    7.878274713952334e-06
-    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:126: FutureWarning: Please use atoms.calc = calc
+    4.8678426428232424e-05
+    /work/amam/ckf7015/fachlabor-dft-ml/tutorials/source/examples/plot_gap.py:129: FutureWarning: Please use atoms.calc = calc
       at_in.set_calculator(ml_potential)
     54000
     (3,)
     (54000,)
-    0.0014386871446798366
+    0.00368252725422809
 
 
 
+
+.. GENERATED FROM PYTHON SOURCE LINES 170-171
+
+Plot force and error correlation for your validation data set as well. 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 4.277 seconds)
+   **Total running time of the script:** (0 minutes 40.638 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_gap.py:

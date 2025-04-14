@@ -11,6 +11,7 @@ Furthermore, GAP uses slightly different labelling from CP2K. That's why we need
 
 We start with importing our python modules. We use tqdm to show a nice progress bar and pint to do unit conversions
 """
+from pathlib import Path
 from tqdm import tqdm
 import pint
 ureg = pint.UnitRegistry()
@@ -154,15 +155,15 @@ def _xyz_to_extxyz(
                 f.write("\n")
 
 # %%
-# We now call the converter on our DFT files
+# We now call the converter on our DFT files.
 
 _xyz_to_extxyz(
     outfile=PROJECT_PATH / "gap/trajectory",
-    positions=PROJECT_PATH / "dft/Argon_Simulation-pos-1.xyz",
-    forces=PROJECT_PATH / "dft/Argon_Simulation-frc-1.xyz",
+    positions=PROJECT_PATH / "dft/liquid_argon_85K/Argon_Simulation-pos-1.xyz",
+    forces=PROJECT_PATH / "dft/liquid_argon_85K/Argon_Simulation-frc-1.xyz",
     lattice=[[17.0742, 0, 0],
              [0, 17.0742, 0],
              [0, 0, 17.0742]])
 
 # %%
-# The converted file can be found in ``gap/train.xyz``
+# The converted file can be found in ``gap/data/trajectory.xyz``

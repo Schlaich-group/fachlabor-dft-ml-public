@@ -17,15 +17,6 @@
    "name": "CP2K"
   }
  ],
- "matplotlib.use": [
-  {
-   "is_class": false,
-   "is_explicit": false,
-   "module": "matplotlib",
-   "module_short": "matplotlib",
-   "name": "use"
-  }
- ],
  "np.linspace": [
   {
    "is_class": false,
@@ -51,6 +42,15 @@
    "module": "pint",
    "module_short": "pint",
    "name": "UnitRegistry"
+  }
+ ],
+ "plt.legend": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "matplotlib.pyplot",
+   "module_short": "matplotlib.pyplot",
+   "name": "legend"
   }
  ],
  "plt.plot": [

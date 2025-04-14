@@ -13,11 +13,11 @@ Getting started
 
 .. container:: justify 
 
-    To run a simulation in CP2K, one needs to provide CP2K with an input script and a starting configuration :download:`system.xyz <./system.xyz>`.
+    To run a simulation in CP2K, one needs to provide CP2K with an input script.
 
 .. container:: justify
 
-    Go into your folder ``dft/liquid_argon_85K``, and place :download:`system.xyz <./system.xyz>` in it. 
+    Go into your folder ``dft/liquid_argon_85K``, and place in it. 
     Then create a blank text file in your folder called ``Argon_Simulation.inp``. 
     Copy the following lines in the ``Argon_Simulation.inp``, where a line starting with 
     a hash symbol (#) is a comment ignored by CP2K:
@@ -171,8 +171,9 @@ System definition
 
    Then we add our topology information, like coordinates and system size.
 
-   First, we need to provide CP2K with a starting configuration. Todo so copy ``resources/argon.xyz`` to your directory ``dft/liquid_argon_85K``. 
-   Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. You can also visualize ``argon.xyz`` with *vmd*. This is our starting configuration. 
+   First, we need to provide CP2K with a starting configuration. Todo so place :download:`system.xyz <./system.xyz>` in your directory ``dft/liquid_argon_85K``. 
+   Take a look into the file. The first line in the xyz format specifies the number of atoms. The following lines set the name and coordinates for each atom. 
+   You can also visualize :download:`system.xyz <./system.xyz>` with *vmd*. This is our starting configuration. 
 
    We now tell CP2K to use this file
 
@@ -181,7 +182,7 @@ System definition
 
             &TOPOLOGY
                 # Starting configuration.
-                COORD_FILE_NAME argon.xyz
+                COORD_FILE_NAME system.xyz
                 COORD_FILE_FORMAT XYZ
                 &GENERATE
                 &END GENERATE
@@ -303,7 +304,7 @@ Molecular dynamics
 .. code-block:: cp2k
     :dedent: 0
 
-    &END MD
+        &END MD
 
 Writing coordinates and forces
 ------------------------------
@@ -315,7 +316,7 @@ Writing coordinates and forces
 .. code-block:: cp2k
     :dedent: 0
 
-            # Define print statements
+        # Define print statements
         &PRINT
             &TRAJECTORY
             &END TRAJECTORY

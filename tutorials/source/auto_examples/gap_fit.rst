@@ -20,39 +20,40 @@
 Fitting GAP 
 ===========
 
-In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data. 
-GAP is implemented as a command line tool gap_fit
+In this tutorial, you will learn to write a bash-script that fits GAP on your DFT data.
+GAP learns the energies and forces as a function of the atomic positions. 
+It is implemented as a command line tool ``gap_fit``
 which takes many parameters. 
-The parameters are specified in the following, and then passed to gap_fit
+The parameters are specified in the following, and then passed to ``gap_fit``
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-11
+.. GENERATED FROM PYTHON SOURCE LINES 9-12
 
 First, we define our parameters which we want to vary later
-In this case, that's the Cut-off,
+In this case, that's the Cut-off of the atomic neighborhood,
 the output file and the input file.
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-16
+.. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 .. code-block:: Bash
 
-    CUT_OFF=3.0
-    GAP_FILE=gap/SOAP.xml
-    INPUT_FILE=gap/train_500.xyz
+    CUT_OFF=4.0
+    GAP_FILE=cut_off_4A/SOAP.xml
+    INPUT_FILE=train.xyz
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-18
+.. GENERATED FROM PYTHON SOURCE LINES 18-19
 
 Next, we have the parameters for GAP. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-19
+.. GENERATED FROM PYTHON SOURCE LINES 20-20
 
 .. code-block:: Bash
 
     GAP_PARAMS=(
-.. GENERATED FROM PYTHON SOURCE LINES 20-21
+.. GENERATED FROM PYTHON SOURCE LINES 21-22
 
 First, we have the parameters for the 2 body distance descriptor
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-30
+.. GENERATED FROM PYTHON SOURCE LINES 23-31
 
 .. code-block:: Bash
 
@@ -65,50 +66,50 @@ First, we have the parameters for the 2 body distance descriptor
     n_sparse=300
     Z1=18
     Z2=18 :
-.. GENERATED FROM PYTHON SOURCE LINES 31-32
+.. GENERATED FROM PYTHON SOURCE LINES 32-33
 
 Then we have the parameters for the SOAP descriptor
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-33
+.. GENERATED FROM PYTHON SOURCE LINES 34-34
 
 .. code-block:: Bash
 
     soap 
-.. GENERATED FROM PYTHON SOURCE LINES 34-35
+.. GENERATED FROM PYTHON SOURCE LINES 35-36
 
-`n_max` and `l_max` is the order of expansion in spherical harmonics
+``n_max`` and ``l_max`` is the order of expansion in spherical harmonics
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-37
+.. GENERATED FROM PYTHON SOURCE LINES 37-38
 
 .. code-block:: Bash
 
     l_max=6
     n_max=6
-.. GENERATED FROM PYTHON SOURCE LINES 38-39
+.. GENERATED FROM PYTHON SOURCE LINES 39-40
 
-`atom_sigma` is the smearing of the atomic position
+``atom_sigma`` is the smearing of the atomic position
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-41
+.. GENERATED FROM PYTHON SOURCE LINES 41-42
 
 .. code-block:: Bash
 
     atom_sigma=0.5
     zeta=4
-.. GENERATED FROM PYTHON SOURCE LINES 42-43
+.. GENERATED FROM PYTHON SOURCE LINES 43-44
 
 Then we specify the cut-off for the neighborhood around the centered atom
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-45
+.. GENERATED FROM PYTHON SOURCE LINES 45-46
 
 .. code-block:: Bash
 
     cutoff=$CUT_OFF
     cutoff_transition_width=0.5
-.. GENERATED FROM PYTHON SOURCE LINES 46-47
+.. GENERATED FROM PYTHON SOURCE LINES 47-48
 
 and some magic settings
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-51
+.. GENERATED FROM PYTHON SOURCE LINES 49-52
 
 .. code-block:: Bash
 
@@ -116,11 +117,11 @@ and some magic settings
     n_sparse=300
     sparse_method=random
     delta=1.0
-.. GENERATED FROM PYTHON SOURCE LINES 52-53
+.. GENERATED FROM PYTHON SOURCE LINES 53-54
 
 Finally, we specify the number of different species and the atomic charge number of the species
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-57
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
 
 .. code-block:: Bash
 
@@ -128,22 +129,22 @@ Finally, we specify the number of different species and the atomic charge number
 
     )
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-59
+.. GENERATED FROM PYTHON SOURCE LINES 59-60
 
 Next, we have some general parameters
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-62
+.. GENERATED FROM PYTHON SOURCE LINES 61-63
 
 .. code-block:: Bash
 
     GEN_PARAMS=(
     e0_method=average 
     gap={"${GAP_PARAMS[@]}"}
-.. GENERATED FROM PYTHON SOURCE LINES 63-64
+.. GENERATED FROM PYTHON SOURCE LINES 64-65
 
 Here we specify the input file (the atomic coordinates and forces) and the output file (the machine learned potential)
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 .. code-block:: Bash
 
@@ -151,11 +152,11 @@ Here we specify the input file (the atomic coordinates and forces) and the outpu
     gp_file=$GAP_FILE 
     default_sigma={0.003 0.15 0 0}
     sparse_jitter=1.0e-10
-.. GENERATED FROM PYTHON SOURCE LINES 69-70
+.. GENERATED FROM PYTHON SOURCE LINES 70-71
 
 and then we have some parsing options for the input file
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-74
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 .. code-block:: Bash
 
@@ -163,17 +164,23 @@ and then we have some parsing options for the input file
     energy_parameter_name=energy
     )
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-76
+.. GENERATED FROM PYTHON SOURCE LINES 76-77
 
 Finally, we print our parameters and then run the gap_fit command
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-78
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 .. code-block:: Bash
 
     echo ${GEN_PARAMS[@]}
 
     gap_fit "${GEN_PARAMS[@]}"
+
+.. GENERATED FROM PYTHON SOURCE LINES 81-83
+
+To run this script open the terminal, navigate to the folder ``your_project/gap`` 
+and execute the command ``bash gap_fit.sh``. 
+
 
 .. _sphx_glr_download_auto_examples_gap_fit.sh:
 
