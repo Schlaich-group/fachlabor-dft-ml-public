@@ -8,3 +8,4 @@ Here are all the tutorials you will need for day 3
 
     running_md_with_lammps
     ../auto_examples/plot_rdf
+    md_at_95K

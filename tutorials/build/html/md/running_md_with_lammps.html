@@ -368,7 +368,7 @@ We will read in the file “argon.xyz” that contains the coordinates of the at
 LAMMPS does not know about elements as defined in the periodic table, so we need to define all relevant attributes of our atoms by ourselves.</p>
 </div>
 <div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">labelmap</span><span class="w"> </span><span class="n">atom</span><span class="w">   </span><span class="m">1</span><span class="w"> </span><span class="n">Ar</span>
-<span class="k">create_atoms</span><span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">420</span><span class="w"> </span><span class="n">simbox</span><span class="w"> </span><span class="n">overlap</span><span class="w"> </span><span class="m">0.3</span>
+<span class="k">create_atoms</span><span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">420</span><span class="w"> </span><span class="n">myRegion</span><span class="w"> </span><span class="n">overlap</span><span class="w"> </span><span class="m">0.3</span>
 <span class="k">set</span><span class="w">             </span><span class="n">atom</span><span class="w">      </span><span class="m">1</span><span class="o">*</span><span class="m">108</span><span class="w">  </span><span class="n">type</span><span class="w"> </span><span class="m">1</span>
 <span class="k">mass</span><span class="w">            </span><span class="m">1</span><span class="w">         </span><span class="m">39.948</span>
 <span class="k">group           </span><span class="nv nv-Identifier">Ar</span><span class="w">        </span><span class="n">type</span><span class="w">   </span><span class="m">1</span>
@@ -384,7 +384,7 @@ that we consider the interaction of all atom types with each other followed bt t
 To obtain the correct label, take a look in <code class="docutils literal notranslate"><span class="pre">../gap/cut_off_5A/SOAP.xml</span></code>. The last number <code class="docutils literal notranslate"><span class="pre">18</span></code> specifies the atomic charge number.</p>
 </div>
 <div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">pair_style</span><span class="w">      </span><span class="n">quip</span>
-<span class="k">pair_coeff</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">..</span><span class="o">/</span><span class="n">gap</span><span class="o">/</span><span class="n">cut_off_5A</span><span class="o">/</span><span class="n">SOAP.xml</span><span class="w"> </span><span class="s">&quot;Potential xml_label=GAP_2025_2_21_60_23_19_51_451&quot;</span><span class="w"> </span><span class="m">18</span>
+<span class="k">pair_coeff</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">..</span><span class="o">/</span><span class="n">..</span><span class="o">/</span><span class="n">gap</span><span class="o">/</span><span class="n">cut_off_5A</span><span class="o">/</span><span class="n">SOAP.xml</span><span class="w"> </span><span class="s">&quot;Potential xml_label=GAP_2025_2_21_60_23_19_51_451&quot;</span><span class="w"> </span><span class="m">18</span>
 </pre></div>
 </div>
 <div class="justify docutils container">
@@ -455,7 +455,7 @@ The run command specifies the number of time steps to run the simulation. In thi
 </div>
 <div class="highlight-lammps notranslate"><div class="highlight"><pre><span></span><span class="k">thermo</span><span class="w">          </span><span class="m">1</span>
 <span class="k">thermo_style</span><span class="w">    </span><span class="n">custom</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="n">density</span><span class="w"> </span><span class="n">press</span>
-<span class="k">run</span><span class="w">             </span><span class="m">100000</span>
+<span class="k">run</span><span class="w">             </span><span class="m">10000</span>
 </pre></div>
 </div>
 </section>
@@ -467,10 +467,7 @@ on all available cores of our machine. This is done using the mpirun command, wh
 (Message Passing Interface) library. The -np flag specifies the number of processes to run in parallel.
 In this case, we set it to 32, meaning that LAMMPS will use 32 processes.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">32</span><span class="w"> </span>lmp_mpi<span class="w"> </span>-in<span class="w"> </span>Ar.in
-
-
-include::<span class="w"> </span>../auto_examples/plot_rdf.rst
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lmp<span class="w"> </span>-in<span class="w"> </span>Ar.lmp
 </pre></div>
 </div>
 </section>

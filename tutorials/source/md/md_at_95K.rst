@@ -1,0 +1,64 @@
+.. _md_at_95K:
+
+MD of argon at 95K
+***************************
+
+.. container:: abstract
+    
+    The following simulations serve to illustrate the limits of machine learned potentials. 
+    We will compare two simulations:
+
+    - MD with GAP trained at 85K (``gap/liquid_argon_85K/cut_off_6A``),
+      at a temperature of 95K.
+    - MD with GAP trained at 95K (files provided in the following), 
+      at a temperature of 95K.
+    
+
+Setting up the work environment
+===============================
+
+.. container:: justify 
+
+   Create the following folder structure
+
+.. code-block::
+    :dedent: 0
+
+    |---your-project
+    |   |---dft
+    |   |---gap
+    |   |   |---liquid_argon_85K
+    |   |   |---liquid_argon_95K
+    |   |   |   |---cut_off_6A
+    |   |---md
+    |   |   |---liquid_argon_85K
+    |   |   |---liquid_argon_95K_gap_85K
+    |   |   |---liquid_argon_95K_gap_95K
+
+
+Simulating at 95K with your potential trained at 85K
+====================================================
+
+.. container:: justify
+
+    First, we will simulate argon at 95K with the GAP trained at 85K.
+    To do so, copy ``md/liquid_argon_85K/Ar.lmp`` to ``md/liquid_argon_95K_gap_85K/Ar.lmp``. Open ``md/liquid_argon_95K_gap_85K/Ar.lmp``, take a look at ``myThermostat`` and edit the line to run the simulation at 95K. 
+
+
+Simulating at 95K with a GAP trained at 95K
+===========================================
+
+.. container:: justify
+
+    Next, we will simulate argon at 95K with GAP trained at 95K. 
+    
+    First, we need to obtain the potential. Download the following files and
+    place them into ``gap/liquid_argon_95K/cut_off_6A``. 
+
+    - :download:`SOAP.xml <./gap_95K/SOAP.xml>`
+    - :download:`SOAP.xml.sparseX..1 <./gap_95K/SOAP.xml.sparseX.GAP_2025_4_4_120_10_21_39_41>`
+    - :download:`SOAP.xml.sparseX..2 <./gap_95K/SOAP.xml.sparseX.GAP_2025_4_4_120_10_21_39_42>`
+
+    Then, copy ``md/liquid_argon_95K_gap_85K/Ar.lmp`` to ``md/liquid_argon_95K_gap_95/Ar.lmp``. Edit the line ``pair_coeff`` to use the downloaded GAP trained at 95K. 
+
+

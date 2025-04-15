@@ -117,7 +117,7 @@ Input preparation
     :dedent: 0 
 
     labelmap atom   1 Ar
-    create_atoms    1 random 108 420 simbox overlap 0.3
+    create_atoms    1 random 108 420 myRegion overlap 0.3
     set		    atom      1*108  type 1
     mass            1         39.948
     group           Ar        type   1
@@ -136,7 +136,7 @@ Input preparation
     :dedent: 0 
 
     pair_style      quip
-    pair_coeff      * * ../gap/cut_off_5A/SOAP.xml "Potential xml_label=GAP_2025_2_21_60_23_19_51_451" 18
+    pair_coeff      * * ../../gap/cut_off_5A/SOAP.xml "Potential xml_label=GAP_2025_2_21_60_23_19_51_451" 18
 
 
 .. container:: justify
@@ -235,7 +235,7 @@ Input preparation
 
     thermo          1
     thermo_style    custom step time temp density press
-    run             100000
+    run             10000
 
 Running the simulation
 ======================
@@ -250,7 +250,6 @@ Running the simulation
 .. code-block:: bash
     :dedent: 0 
 
-    mpirun -np 32 lmp_mpi -in Ar.in
+    lmp -in Ar.lmp
 
 
-    include:: ../auto_examples/plot_rdf.rst

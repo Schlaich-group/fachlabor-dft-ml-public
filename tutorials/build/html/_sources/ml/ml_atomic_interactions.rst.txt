@@ -30,7 +30,8 @@ Setting up our work environment
     |   |   |   |---Argon_Simulation-pos-1.xyz
     |   |   |   |---Argon_Simulation-frc-1.xyz
     |   |---gap
-    |   |   |---cut_off_4A
+    |   |   |---liquid_argon_85K
+    |   |   |   |---cut_off_4A
     
 .. container:: justify
     
